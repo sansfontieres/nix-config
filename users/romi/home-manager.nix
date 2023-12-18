@@ -46,8 +46,6 @@ in {
       pkgs.git-lfs
       pkgs.helix
       pkgs.lldb_16
-      pkgs.lua
-      pkgs.luarocks
       pkgs.htop
       pkgs.isync
       pkgs.jq

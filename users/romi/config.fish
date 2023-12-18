@@ -6,24 +6,20 @@ set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/zig" "$homelocal/zls
 set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/janet/bin"
 set -q PATH; or set PATH ''; set -gx PATH $PATH "$PLAN9/bin"
 
+# Mainly for work, can't wait to get rid of homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)";
 
 # HINT: vis-editor needs to find its libs
 eval "$(luarocks path --bin)"
-
 
 function fish_prompt --description 'Write out the prompt'
     prompt $status
 end
 
-function load_homebrew_env
-    # Mainly for work, can't wait to get rid of homebrew
-    eval "$(/opt/homebrew/bin/brew shellenv)";
-end
 
 function load_work_stash
     # TODO: asdf and brew begone
     . "$HOME"/.asdf/asdf.fish
-    load_homebrew_env
     source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
     rubocop --start-server
 end
