@@ -9,6 +9,12 @@ set -q PATH; or set PATH ''; set -gx PATH $PATH "$PLAN9/bin"
 # Mainly for work, can't wait to get rid of homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)";
 
+# nix-darwin overwrites XDG_DATA_DIRS and tempers with Ghostty
+# auto-injection, so we have to source it manually.
+if set -q GHOSTTY_RESOURCES_DIR
+    source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
+end
+
 # HINT: vis-editor needs to find its libs
 function load_luarocks_paths
     eval "$(luarocks path --bin)"
