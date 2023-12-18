@@ -10,12 +10,13 @@ set -q PATH; or set PATH ''; set -gx PATH $PATH "$PLAN9/bin"
 eval "$(/opt/homebrew/bin/brew shellenv)";
 
 # HINT: vis-editor needs to find its libs
-eval "$(luarocks path --bin)"
+function load_luarocks_paths
+    eval "$(luarocks path --bin)"
+end
 
 function fish_prompt --description 'Write out the prompt'
     prompt $status
 end
-
 
 function load_work_stash
     # TODO: asdf and brew begone
