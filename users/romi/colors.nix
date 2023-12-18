@@ -4,26 +4,26 @@
     foreground = "#3d3d3d";
 
     base16 = {
-      black = "#2A2A2A";
-      red = "#D11100";
+      black = "#2a2a2a";
+      red = "#d11100";
       green = "#309900";
-      yellow = "#C79800";
-      blue = "#0063DB";
-      magenta = "#D4008E";
-      cyan = "#00B8A5";
+      yellow = "#c79800";
+      blue = "#0063db";
+      magenta = "#d4008e";
+      cyan = "#00b8a5";
       white = "#cccccc";
       bright_black = "#858585";
       bright_red = "#b80f00";
-      bright_green = "#218F00";
-      bright_yellow = "#B38900";
-      bright_blue = "#0040C8";
-      bright_magenta = "#B8007B";
+      bright_green = "#218f00";
+      bright_yellow = "#b38900";
+      bright_blue = "#0040c8";
+      bright_magenta = "#b8007b";
       bright_cyan = "#009485";
       bright_white = "#ebebeb";
     };
 
     extra = {
-      orange = "#D96600";
+      orange = "#d96600";
     };
   };
 }
