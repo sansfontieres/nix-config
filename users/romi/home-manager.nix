@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  system,
+  ...
+}: {
   config,
   lib,
   pkgs,
@@ -73,6 +77,7 @@ in {
     ]);
 
   home.sessionVariables = {
+    BIN_PATH = "$HOME/bin/${system}";
     PLAN9 = "${pkgs.plan9port}/plan9";
     LANG = "en_US.UTF-8";
     LC_CTYPE = "en_US.UTF-8";

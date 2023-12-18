@@ -37,6 +37,7 @@ in
         home-manager.useUserPackages = true;
         home-manager.users.${user} = import userHMConfig {
           inputs = inputs;
+          system = system;
         };
       }
 

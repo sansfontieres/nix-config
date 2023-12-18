@@ -1,13 +1,17 @@
-set homepath "$HOME/bin"
+set symlink_path "$HOME/bin/symlinks"
+set script_path "$HOME/bin/scripts"
 set homelocal "$HOME/.local"
-
-set -q PATH; or set PATH ''; set -gx PATH $homepath $PATH
-set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/zig" "$homelocal/zls"
-set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/janet/bin"
-set -q PATH; or set PATH ''; set -gx PATH $PATH "$PLAN9/bin"
 
 # Mainly for work, can't wait to get rid of homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)";
+
+set -q PATH; or set PATH ''; set -gx PATH $symlink_path $PATH
+set -q PATH; or set PATH ''; set -gx PATH $script_path $PATH
+set -q PATH; or set PATH ''; set -gx PATH $BIN_PATH $PATH
+
+set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/zig" "$homelocal/zls"
+set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/janet/bin"
+set -q PATH; or set PATH ''; set -gx PATH $PATH "$PLAN9/bin"
 
 # nix-darwin overwrites XDG_DATA_DIRS and tempers with Ghostty
 # auto-injection, so we have to source it manually.
