@@ -1,8 +1,6 @@
 set homepath "$HOME/bin"
 set homelocal "$HOME/.local"
 
-set -q PATH; or set PATH ''; set -gx PATH "/opt/local/bin" "/opt/local/sbin" $PATH
-
 set -q PATH; or set PATH ''; set -gx PATH $homepath $PATH
 set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/zig" "$homelocal/zls"
 set -q PATH; or set PATH ''; set -gx PATH $PATH "$homelocal/janet/bin"
