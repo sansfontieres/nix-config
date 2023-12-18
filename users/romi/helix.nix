@@ -8,7 +8,7 @@
         line-number = "relative";
         bufferline = "multiple";
         color-modes = true;
-        shell = ["rc" "-c"];
+        shell = ["${pkgs.rc-9front}/bin/rc" "-c"];
         cursor-shape.insert = "bar";
         indent-guides = {
           render = true;
