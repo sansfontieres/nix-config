@@ -1,13 +1,21 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   colors = import ./colors.nix;
   theme = colors.hito_light;
   ghostty_path = "${config.xdg.configHome}/ghostty";
+  font_size =
+    if pkgs.stdenv.isDarwin
+    then "13"
+    else "12";
 in {
   home.file."${ghostty_path}/config".text = ''
     font-family = "MD IO"
     font-feature = "calt"
     font-feature = "zero"
-    font-size = 12
+    font-size = ${font_size}
 
     macos-option-as-alt = left
     mouse-hide-while-typing = false
