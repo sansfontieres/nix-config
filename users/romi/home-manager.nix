@@ -10,17 +10,6 @@
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
-
-  # https://github.com/sharkdp/bat/issues/1145
-  manpager = pkgs.writeShellScriptBin "manpager" (
-    if isDarwin
-    then ''
-      sh -c 'col -bx | bat -l man -p'
-    ''
-    else ''
-      cat "$1" | col -bx | bat --language man --style plain
-    ''
-  );
 in {
   home.stateVersion = "23.11";
 
@@ -62,6 +51,8 @@ in {
       # pkgs.opam
       # pkgs.fpc
       # pkgs.femtolisp-unstable
+      pkgs.janet
+      pkgs.jpm
       pkgs.lldb_16
       pkgs.nil
 

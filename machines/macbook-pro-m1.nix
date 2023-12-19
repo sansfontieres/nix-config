@@ -16,21 +16,29 @@
 
   programs.zsh.enable = true;
   programs.zsh.shellInit = ''
-    # Nix
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     fi
-    # End Nix
   '';
 
+  # HACK: looks like my nix pkgs are after system bins
   programs.fish.enable = true;
   programs.fish.shellInit = ''
-    # Nix
     if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
       source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
     end
-    # End Nix
+
+    fish_add_path --move --prepend --path /etc/profiles/per-user/$USER/bin
   '';
+
+  # It doesn't get itself into path if enabled, nix-darwin is strange in
+  # this regard.
+  environment.extraInit =
+    if config.homebrew.enable
+    then ''
+      eval "$(${config.homebrew.brewPrefix}/brew shellenv)"
+    ''
+    else null;
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
 

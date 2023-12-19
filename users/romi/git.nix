@@ -13,6 +13,7 @@ in {
     aliases = {
       ap = "add -p";
       ai = "add -i";
+      an = "add -N";
       chd = "diff --cached";
       st = "status --short --branch";
       fix = "commit --fixup";
