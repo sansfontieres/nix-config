@@ -48,6 +48,7 @@ in {
       pkgs.htop
       pkgs.jq
       pkgs.fd
+      pkgs.mercurial
       pkgs.par
       pkgs.plan9port
       pkgs.rc-9front
@@ -148,9 +149,10 @@ in {
   };
 
   imports = [
-    ./git.nix
     ./dircolors.nix
-    ./helix.nix
     ./ghostty.nix
+    ./git.nix
+    ./helix.nix
+    ./mercurial.nix
   ];
 }
