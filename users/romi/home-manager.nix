@@ -66,12 +66,12 @@ in {
       pkgs.universal-ctags
       pkgs.w3m
       pkgs.watch
-      pkgs.tailscale
     ]
     ++ (lib.optionals isDarwin [
       pkgs.cachix
     ])
     ++ (lib.optionals isLinux [
+      pkgs.tailscale
       pkgs.firefox
     ]);
 

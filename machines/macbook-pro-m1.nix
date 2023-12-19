@@ -41,6 +41,4 @@
     else null;
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
-
-  services.tailscale.enable = true;
 }

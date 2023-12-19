@@ -31,6 +31,13 @@
       "transmission" # :^)
       "vlc" # :^)
     ];
+
+    masApps = {
+      "Reeder" = 1529448980;
+      "Strongbox" = 897283731;
+      "XCode" = 497799835;
+      "Tailscale" = 1475387142;
+    };
   };
 
   users.users.romi = {
