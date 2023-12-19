@@ -141,6 +141,7 @@ in {
   };
 
   imports = [
+    ./bat.nix
     ./dircolors.nix
     ./ghostty.nix
     ./git.nix
