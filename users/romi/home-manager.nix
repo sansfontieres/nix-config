@@ -47,6 +47,7 @@ in {
       pkgs.helix
       pkgs.htop
       pkgs.jq
+      pkgs.less
       pkgs.fd
       pkgs.mercurial
       pkgs.par
@@ -91,9 +92,9 @@ in {
     LC_ALL = "en_US.UTF-8";
     PAGER = "less -FirSwX";
     VISUAL = "$EDITOR";
-    MANPAGER = "${manpager}/bin/manpager";
-    MBLAZE = "$HOME/mblaze";
-    MBLAZE_PAGER = "less -cR -k $MBLAZE/mlesskey";
+    MBLAZE = "$HOME/.config/mblaze";
+    MBLAZE_PAGER = "less -cR";
+    MBLAZE_LESSKEY = "$MBLAZE/mlesskey";
   };
 
   #################
@@ -153,6 +154,7 @@ in {
     ./ghostty.nix
     ./git.nix
     ./helix.nix
+    ./mblaze.nix
     ./mercurial.nix
   ];
 }

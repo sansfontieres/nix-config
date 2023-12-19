@@ -2,6 +2,8 @@ set SYMLINK_PATH "$HOME/bin/symlinks"
 set SCRIPT_PATH "$HOME/bin/scripts"
 set HOMELOCAL "$HOME/.local"
 
+set -gx MAILDIR "$HOME/mail"
+
 # Mainly for work, can't wait to get rid of homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)";
 
@@ -18,6 +20,17 @@ set -gx EZA_COLORS "oc=2:ur=2:uw=2:ux=2:ue=2:gr=2:gw=2:gx=2:tr=2:tw=2:su=2:sf=2:
 set -gx EZA_TIME_STYLE "+%y-%m-%dT%H·%M"
 # delete comments once eza manages multi-style-format
 #  %m-%dT%H·%M"
+
+set -gx MCOLOR_CUR 1
+set -gx MCOLOR_MISS 2
+set -gx MCOLOR_FROM 3
+set -gx MCOLOR_HEADER 3
+set -gx MCOLOR_FOOTER 7
+set -gx MCOLOR_SIG 2
+set -gx MCOLOR_SEP 7
+set -gx MCOLOR_QUOTE 244
+set -gx MCOLOR_QQUOTE 246
+set -gx MCOLOR_QQQUOTE 250
 
 # nix-darwin overwrites XDG_DATA_DIRS and tempers with Ghostty
 # auto-injection, so we have to source it manually.
