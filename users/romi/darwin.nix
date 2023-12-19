@@ -5,6 +5,14 @@
 }: {
   homebrew = {
     enable = true;
+
+    brews = [
+      "kubernetes-cli"
+      "postgis"
+      "postgresql"
+      "redis"
+    ];
+
     casks = [
       # TODO: Find out if some of them are in nixpkgs
       "affinity-publisher"
