@@ -127,7 +127,7 @@ in {
         ls = "eza";
         ls1 = "eza -1";
         lsa = "eza -1a";
-        lsf = "eza -la";
+        lsf = "eza -la --time-style=$EZA_TIME_STYLE";
         tree = "eza --tree";
         fnix = "nix-shell --run fish";
       }
