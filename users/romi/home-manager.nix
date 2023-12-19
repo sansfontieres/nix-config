@@ -32,38 +32,44 @@ in {
 
   home.packages =
     [
-      # pkgs.opam
-      pkgs.asciinema
+      # Utils
       pkgs.bat
       pkgs.cmake
-      pkgs.catgirl
       pkgs.coreutils
+      pkgs.curl
       pkgs.delta
-      pkgs.dos2unix
-      pkgs.exiftool
       pkgs.eza
-      pkgs.fd
       pkgs.fzf
       pkgs.fzy
       pkgs.gh
       pkgs.git
       pkgs.git-lfs
       pkgs.helix
-      pkgs.lldb_16
       pkgs.htop
-      pkgs.isync
       pkgs.jq
-      pkgs.mblaze
-      pkgs.mosh
-      pkgs.msmtp
-      pkgs.alejandra
-      pkgs.notmuch
+      pkgs.fd
       pkgs.par
       pkgs.plan9port
       pkgs.rc-9front
       pkgs.ripgrep
       pkgs.rlwrap
-      pkgs.tree
+      pkgs.samurai
+      pkgs.tlsclient
+
+      # Compilers/interpreters and tools
+      # pkgs.opam
+      # pkgs.fpc
+      # pkgs.femtolisp-unstable
+      pkgs.lldb_16
+      pkgs.nil
+
+      # Misc
+      pkgs.isync
+      pkgs.mblaze
+      pkgs.msmtp
+      pkgs.catgirl
+      pkgs.alejandra
+      pkgs.notmuch
       pkgs.universal-ctags
       pkgs.w3m
       pkgs.watch
