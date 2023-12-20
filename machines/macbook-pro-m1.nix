@@ -3,16 +3,14 @@
   pkgs,
   ...
 }: {
-  # Don't let nix-darwin take over our business.
-  nix.useDaemon = true;
-
   nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
-    '';
+    # Don't let nix-darwin take over our business.
+    useDaemon = true;
   };
+
+  imports = [
+    ./common.nix
+  ];
 
   programs.zsh.enable = true;
   programs.zsh.shellInit = ''
