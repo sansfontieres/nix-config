@@ -31,8 +31,7 @@ in {
       pkgs.fzf
       pkgs.fzy
       pkgs.gh
-      pkgs.git
-      pkgs.git-lfs
+      pkgs.gitFull
       pkgs.helix
       pkgs.htop
       pkgs.jq
@@ -98,6 +97,7 @@ in {
 
   programs.direnv = {
     enable = true;
+    nix-direnv.enable = true;
 
     config = {
       whitelist = {

@@ -1,8 +1,11 @@
-let
+{pkgs, ...}: let
   ssh = import ./ssh.nix;
 in {
   programs.git = {
     enable = true;
+    package = pkgs.gitFull;
+    lfs.enable = true;
+
     userName = "Romi Hervier";
     userEmail = "r@sansfontieres.com";
     signing = {
@@ -72,5 +75,10 @@ in {
       file-style = "none bold ul";
       file-deocration-style = "none";
     };
+  };
+
+  programs.gh = {
+    enable = true;
+    settings.git_protocol = "ssh";
   };
 }
