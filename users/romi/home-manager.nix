@@ -28,6 +28,7 @@ in {
       pkgs.curl
       pkgs.delta
       pkgs.eza
+      pkgs.file
       pkgs.fzf
       pkgs.fzy
       pkgs.gh
@@ -70,8 +71,10 @@ in {
       pkgs.cachix
     ])
     ++ (lib.optionals isLinux [
-      pkgs.tailscale
       pkgs.firefox
+      pkgs.gdb
+      pkgs.tailscale
+      pkgs.valgrind
     ]);
 
   home.sessionVariables = {
@@ -128,7 +131,7 @@ in {
         lsa = "eza -1a";
         lsf = "eza -la --time-style=$EZA_TIME_STYLE";
         tree = "eza --tree";
-        fnix = "nix-shell --run fish";
+        # fnix = "nix shell";
       }
       // (
         if isLinux
