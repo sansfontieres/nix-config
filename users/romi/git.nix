@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  ssh = import ./ssh.nix;
+  keys = import ../../keys.nix;
 in {
   programs.git = {
     enable = true;
@@ -9,7 +9,7 @@ in {
     userName = "Romi Hervier";
     userEmail = "r@sansfontieres.com";
     signing = {
-      key = ssh.pubkey;
+      key = keys.ssh.signing;
       signByDefault = true;
     };
 
