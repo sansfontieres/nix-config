@@ -1,6 +1,8 @@
 {
   inputs,
-  system,
+  currentSystem,
+  currentSystemName,
+  currentSystemUser,
   ...
 }: {
   config,
@@ -80,7 +82,7 @@ in {
     ]);
 
   home.sessionVariables = {
-    BIN_PATH = "$HOME/bin/${system}";
+    BIN_PATH = "$HOME/bin/${currentSystem}";
     PLAN9 = "${pkgs.plan9port}/plan9";
     LANG = "en_US.UTF-8";
     LC_CTYPE = "en_US.UTF-8";
@@ -146,6 +148,7 @@ in {
   };
 
   imports = [
+    inputs.agenix.homeManagerModules.default
     ./bat.nix
     ./dircolors.nix
     ./ghostty.nix

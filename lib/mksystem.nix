@@ -20,6 +20,13 @@
     then inputs.darwin.lib.darwinSystem
     else nixpkgs.lib.nixosSystem;
 
+  # TODO: Check how I can play with agenix system-wide rather than with
+  # home-manager
+  agenixModules =
+    if darwin
+    then inputs.agenix.darwinModules
+    else inputs.agenix.nixosModules;
+
   home-manager =
     if darwin
     then inputs.home-manager.darwinModules
@@ -29,6 +36,8 @@ in
     inherit system;
 
     modules = [
+      agenixModules.age
+
       machineConfig
       userOSConfig
       home-manager.home-manager
@@ -37,7 +46,9 @@ in
         home-manager.useUserPackages = true;
         home-manager.users.${user} = import userHMConfig {
           inputs = inputs;
-          system = system;
+          currentSystem = system;
+          currentSystemName = name;
+          currentSystemUser = user;
         };
       }
 
