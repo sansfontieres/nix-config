@@ -1,4 +1,5 @@
 {
+  # TODO: Rework this
   hito_light = {
     background = "#fdfdfd";
     foreground = "#3d3d3d";
@@ -22,8 +23,27 @@
       bright_white = "#ebebeb";
     };
 
+    gray = {
+      one = "#858585";
+      two = "#5c5c5c";
+      three = "#bbbbbb";
+      four = "#eeeeee";
+    };
+
     extra = {
       orange = "#d96600";
+
+      purple = "#be95ff";
+      gold = "#846d21";
+      specials = "#fed200";
+      selection = "#e2e3fa";
+    };
+    diffs = {
+      bg = {
+        minus = "#ffdfdc";
+        add = "#d8f8ca";
+        change = "#ccdff7";
+      };
     };
   };
 }
