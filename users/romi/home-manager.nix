@@ -18,6 +18,17 @@ in {
   xdg.enable = true;
 
   #################
+  # Secrets
+  #################
+
+  age = {
+    identityPaths = ["${config.home.homeDirectory}/.ssh/${currentSystemName}"];
+    secrets = {
+      catgirls.file = ../../secrets/catgirls.age;
+    };
+  };
+
+  #################
   # Packages
   #################
 
@@ -145,6 +156,23 @@ in {
         }
         else {}
       );
+
+    functions = {
+      catgirls.body = ''
+        switch (count $argv)
+        case 1
+          while true
+            ${pkgs.catgirl}/bin/catgirl \
+            --host fugu.sansfontieres.com \
+            --pass $(cat ${config.age.secrets.catgirls.path}) \
+            --user romi/$argv[1]@${currentSystemName} \
+            --hash 0,15 --quiet --log
+          end
+        case '*'
+          printf "no.\n"
+        end
+      '';
+    };
   };
 
   imports = [
