@@ -35,7 +35,9 @@ in {
       pkgs.gitFull
       pkgs.helix
       pkgs.htop
+      pkgs.hut
       pkgs.jq
+      pkgs.keepassxc
       pkgs.less
       pkgs.fd
       pkgs.mercurial
