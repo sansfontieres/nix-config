@@ -24,6 +24,11 @@
         home-manager.follows = "home-manager";
       };
     };
+
+    zig = {
+      url = "github:mitchellh/zig-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -34,8 +39,11 @@
     darwin,
     ...
   } @ inputs: let
+    overlays = [
+      inputs.zig.overlays.default
+    ];
     mkSystem = import ./lib/mksystem.nix {
-      inherit nixpkgs inputs;
+      inherit overlays nixpkgs inputs;
     };
   in {
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {

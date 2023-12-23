@@ -1,4 +1,5 @@
 {
+  overlays,
   nixpkgs,
   inputs,
 }: name: {
@@ -36,6 +37,7 @@ in
     inherit system;
 
     modules = [
+      {nixpkgs.overlays = overlays;}
       agenixModules.age
 
       machineConfig

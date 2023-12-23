@@ -60,7 +60,8 @@ in {
       pkgs.ripgrep
       pkgs.rlwrap
       pkgs.samurai
-      pkgs.tlsclient
+      pkgs.tlsclient # NOTE: doesn’t ship git-remote-hjgit
+      pkgs._9pro
 
       # Compilers/interpreters and tools
       # pkgs.opam
@@ -70,6 +71,7 @@ in {
       pkgs.jpm
       pkgs.lldb_16
       pkgs.nil
+      pkgs.zigpkgs.master
 
       # Misc
       pkgs.isync

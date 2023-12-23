@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  nixpkgs.overlays =
+    import ../../lib/overlays.nix
+    ++ [];
+
   homebrew = {
     enable = true;
 
