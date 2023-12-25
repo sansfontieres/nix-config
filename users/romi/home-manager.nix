@@ -174,6 +174,10 @@ in {
           printf "no.\n"
         end
       '';
+
+      gc.body = ''
+        rlwrap -a'XXXXXXwth' -s 0 -t dumb ${pkgs._9pro}/bin/9gc -e romi
+      '';
     };
   };
 
