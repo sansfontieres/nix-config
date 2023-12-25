@@ -72,6 +72,7 @@ in {
       pkgs.lldb_16
       pkgs.nil
       pkgs.zigpkgs.master
+      pkgs.zls
 
       # Misc
       pkgs.isync

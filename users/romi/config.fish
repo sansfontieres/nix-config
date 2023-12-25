@@ -7,8 +7,6 @@ set -gx MAILDIR "$HOME/mail"
 set -q PATH; or set PATH ''; set -gx PATH $SYMLINK_PATH $PATH
 set -q PATH; or set PATH ''; set -gx PATH $SCRIPT_PATH $PATH
 set -q PATH; or set PATH ''; set -gx PATH $BIN_PATH $PATH
-
-set -q PATH; or set PATH ''; set -gx PATH $PATH "$HOMELOCAL/zig" "$homelocal/zls"
 set -q PATH; or set PATH ''; set -gx PATH $PATH "$PLAN9/bin"
 
 set -gx EZA_COLORS "oc=2:ur=2:uw=2:ux=2:ue=2:gr=2:gw=2:gx=2:tr=2:tw=2:su=2:sf=2:xa=2:uu=2:uR=1:un=2;1:gu=2:sn=2:sb=2:da=2"
@@ -52,11 +50,6 @@ end
 
 function load_opam
     eval "$(opam env)"
-end
-
-function load_zig_stable
-    # TODO: Manage this with flakes
-    set -q PATH; or set PATH ''; set -gx PATH "$HOMELOCAL"/zig-0.11.0 $PATH
 end
 
 # I beg you to stop
