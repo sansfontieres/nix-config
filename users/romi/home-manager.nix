@@ -195,5 +195,6 @@ in {
     # ./keepassxc.nix
     ./mblaze.nix
     ./mercurial.nix
+    ./openbox
   ];
 }

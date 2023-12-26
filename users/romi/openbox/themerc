@@ -1,0 +1,145 @@
+# Some icons from https://www.opendesktop.org/p/1653654
+
+# Window geometry
+padding.width: 4
+border.width: 0
+window.client.padding.width: 1
+window.client.padding.height: 1
+window.handle.width: 0
+
+#Menu geometry
+menu.border.width: 1
+menu.overlap: 5
+
+# Border colors
+window.active.border.color: #383838
+window.inactive.border.color: #383838
+menu.border.color: #383838
+window.active.client.color: #383838
+window.inactive.client.color: #383838
+window.active.title.separator.color: #000000
+window.inactive.title.separator.color: #000000
+
+# Text shadows
+window.active.label.text.font: shadow=y:shadowtint=0:shadowoffset=10
+window.inactive.label.text.font: shadow=y:shadowtint=0:shadowoffset=10
+menu.items.font: shadow=n
+menu.title.text.font: shadow=n
+
+# Window title justification
+window.label.text.justify: Center
+
+# Active window
+window.active.title.bg: Solid Flat
+window.active.title.bg.color: #383838
+
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #fdfdfd
+
+window.active.button.unpressed.bg: Gradient Diagonal Border
+window.active.button.unpressed.bg.color: #383838
+window.active.button.unpressed.bg.colorTo: #383838
+window.active.button.unpressed.bg.color.highlight: #797979
+window.active.button.unpressed.bg.color.shadow: #000000
+window.active.button.unpressed.image.color: #fdfdfd
+
+window.active.button.pressed.bg: Gradient Diagonal Border
+window.active.button.pressed.bg.color: #fdfdfd
+window.active.button.pressed.bg.colorTo: #fdfdfd
+window.active.button.pressed.bg.color.highlight: #665116
+window.active.button.pressed.bg.color.shadow: #e3b433
+window.active.button.pressed.image.color: #e3b433
+
+window.active.button.disabled.bg: Gradient Diagonal Border
+window.active.button.disabled.bg.color: #5c5c5c
+window.active.button.disabled.bg.colorTo: #5c5c5c
+window.active.button.disabled.bg.color.highlight: #797979
+window.active.button.disabled.bg.color.shadow: #000000
+window.active.button.disabled.image.color: #424242
+
+window.active.button.unpressed.bg: Gradient Diagonal Border
+window.active.button.unpressed.bg.color: #383838
+window.active.button.unpressed.bg.colorTo: #383838
+window.active.button.unpressed.bg.color.highlight: #797979
+window.active.button.unpressed.bg.color.shadow: #000000
+window.active.button.unpressed.image.color: #fdfdfd
+
+window.active.button.hover.bg: Solid Flat Border
+window.active.button.hover.bg.color: #665116
+window.active.button.hover.bg.border.color: #e3b43e
+window.active.button.hover.image.color: #fdfdfd
+
+window.active.button.toggled.unpressed.bg: Solid Flat Border
+window.active.button.toggled.unpressed.bg.color: #665116
+window.active.button.toggled.unpressed.bg.border.color: #e3b43e
+window.active.button.toggled.unpressed.image.color: #fdfdfd
+
+window.active.button.toggled.pressed.bg: Solid Flat Border
+window.active.button.toggled.pressed.bg.color: #665116
+window.active.button.toggled.pressed.bg.border.color: #e3b43e
+window.active.button.toggled.pressed.image.color: #fdfdfd
+
+window.active.button.toggled.hover.bg: Solid Flat Border
+window.active.button.toggled.hover.bg.color: #665116
+window.active.button.toggled.hover.bg.border.color: #e3b43e
+window.active.button.toggled.hover.image.color: #fdfdfd
+
+# Inactive windows
+window.inactive.title.bg: Flat Solid
+window.inactive.title.bg.color: #383838
+
+window.inactive.label.bg: Parentrelative
+window.inactive.label.text.color: #a5a5a5
+
+window.inactive.button.unpressed.bg: Gradient Diagonal Border
+window.inactive.button.unpressed.bg.color: #383838
+window.inactive.button.unpressed.bg.colorTo: #383838
+window.inactive.button.unpressed.bg.color.highlight: #797979
+window.inactive.button.unpressed.bg.color.shadow: #000000
+window.inactive.button.unpressed.image.color: #999999
+
+window.inactive.button.disabled.bg: Gradient Diagonal Border
+window.inactive.button.disabled.bg.color: #5c5c5c
+window.inactive.button.disabled.bg.colorTo: #5c5c5c
+window.inactive.button.disabled.bg.color.highlight: #797979
+window.inactive.button.disabled.bg.color.shadow: #000000
+window.inactive.button.disabled.image.color: #424242
+
+window.inactive.button.hover.bg: Gradient Diagonal Border
+window.inactive.button.hover.bg.color: #797979
+window.inactive.button.hover.bg.colorTo: #797979
+window.inactive.button.hover.bg.color.highlight: #797979
+window.inactive.button.hover.bg.color.shadow: #000000
+window.inactive.button.hover.image.color: #424242
+
+window.inactive.button.toggled.unpressed.bg: Solid Flat Border
+window.inactive.button.toggled.unpressed.bg.color: #665116
+window.inactive.button.toggled.unpressed.bg.border.color: #e3b43e
+window.inactive.button.toggled.unpressed.image.color: #fdfdfd
+
+window.inactive.button.toggled.hover.bg: Flat Solid
+window.inactive.button.toggled.hover.bg.color: #797979
+window.inactive.button.toggled.hover.image.color: #fdfdfd
+
+# Menus
+# TODO
+menu.title.bg: Solid Flat
+menu.title.bg.color: #fdfdfd
+#menu.title.bg.colorTo: #4d6982
+menu.title.text.color: #000000
+menu.title.text.justify: Left
+menu.separator.color: #919191
+menu.separator.width: 1
+menu.separator.padding.width: 5
+menu.separator.padding.height: 5
+
+menu.items.bg: Flat Solid
+menu.items.bg.color: #eeeeee
+menu.items.text.color: #000000
+menu.items.disabled.text.color: #919191
+
+menu.items.active.bg: Flat Solid
+menu.items.active.bg.color: #fdfdfd
+#menu.items.active.bg.colorTo: #50708d
+menu.items.active.text.color: #000000
+menu.items.active.disabled.text.color: #919191
