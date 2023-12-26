@@ -27,6 +27,8 @@ in {
     mouse-hide-while-typing = false
     window-theme = dark
 
+    gtk-titlebar = false
+
     keybind = super+f=toggle_split_zoom
     keybind = super+shift+h=goto_split:left
     keybind = super+shift+j=goto_split:bottom
