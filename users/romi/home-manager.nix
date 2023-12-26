@@ -94,6 +94,9 @@ in {
       pkgs.gdb
       pkgs.tailscale
       pkgs.valgrind
+
+      # NOTE: Private repos
+      pkgs.personal-fonts
     ]);
 
   home.sessionVariables = {
