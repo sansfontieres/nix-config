@@ -6,4 +6,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   programs.ssh.startAgent = true;
+
+  services.tailscale.enable = true;
 }
