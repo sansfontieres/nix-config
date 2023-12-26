@@ -1,5 +1,5 @@
 {
-  # xdg.configFile."bat/themes/base.tmTheme".source = ./bat.tmtheme;
+  xdg.configFile."bat/themes/base.tmTheme".source = ./bat.tmTheme;
   programs.bat = {
     enable = true;
     config = {
