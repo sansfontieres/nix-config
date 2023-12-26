@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  currentSystemName,
   ...
 }: {
   nix = {
@@ -39,4 +40,6 @@
     else null;
 
   environment.shells = with pkgs; [bashInteractive zsh fish];
+
+  networking.computerName = currentSystemName;
 }

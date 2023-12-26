@@ -4,6 +4,6 @@ in {
   # asymmetric cryptography :^(
   "catgirls.age".publicKeys = builtins.attrValues {
     inherit (users) romi;
-    inherit (hosts) macbook-pro-m1;
+    inherit (hosts) macbook-pro-m1 innocence;
   };
 }

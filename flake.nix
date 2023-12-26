@@ -34,6 +34,9 @@
       url = "github:zigtools/zls";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty = {
+      url = "git+ssh://git@github.com/mitchellh/ghostty";
+    };
   };
 
   outputs = {
@@ -51,6 +54,11 @@
       inherit overlays nixpkgs inputs;
     };
   in {
+    nixosConfigurations.innocence = mkSystem "innocence" {
+      system = "x86_64-linux";
+      user = "romi";
+    };
+
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {
       system = "aarch64-darwin";
       user = "romi";

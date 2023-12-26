@@ -46,6 +46,7 @@ in {
       pkgs.fzy
       pkgs.gh
       pkgs.gitFull
+      pkgs.gnumake # :^(
       pkgs.helix
       pkgs.htop
       pkgs.hut
@@ -179,6 +180,10 @@ in {
       gc.body = ''
         rlwrap -a'XXXXXXwth' -s 0 -t dumb ${pkgs._9pro}/bin/9gc -e romi
       '';
+
+      prompt.body = ''
+        printf "; "
+      '';
     };
   };
 
@@ -189,6 +194,7 @@ in {
     ./ghostty.nix
     ./git.nix
     ./helix.nix
+    # ./keepassxc.nix
     ./mblaze.nix
     ./mercurial.nix
   ];

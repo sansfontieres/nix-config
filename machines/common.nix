@@ -18,7 +18,6 @@
   };
 
   networking.hostName = currentSystemName;
-  networking.computerName = currentSystemName;
   environment.systemPackages = [
     inputs.agenix.packages."${currentSystem}".default
   ];
