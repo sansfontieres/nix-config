@@ -60,6 +60,7 @@
 
     # Desktop
     inputs.ghostty.packages."${currentSystem}".default
+    pkgs.arc-icon-theme
     pkgs.firefox
     pkgs.phantomstyle
   ];
