@@ -2,7 +2,6 @@
   stdenv,
   lib,
   fetchFromSourcehut,
-  makeWrapper,
 }:
 stdenv.mkDerivation {
   pname = "9pro";

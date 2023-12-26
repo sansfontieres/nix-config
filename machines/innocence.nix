@@ -61,6 +61,7 @@
     # Desktop
     inputs.ghostty.packages."${currentSystem}".default
     pkgs.firefox
+    pkgs.phantomstyle
   ];
 
   fonts.packages = with pkgs; [
