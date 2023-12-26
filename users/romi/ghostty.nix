@@ -10,6 +10,12 @@
     if pkgs.stdenv.isDarwin
     then "13"
     else "12";
+  extra_keybinds =
+    if pkgs.stdenv.isLinux
+    then ''
+      keybind = super+t=new_tab
+    ''
+    else "";
 in {
   home.file."${ghostty_path}/config".text = ''
     font-family = "MD IO"
@@ -30,6 +36,8 @@ in {
     keybind = super+ctrl+j=resize_split:down,10
     keybind = super+ctrl+k=resize_split:up,10
     keybind = super+ctrl+l=resize_split:right,10
+
+    ${extra_keybinds}
 
     cursor-style = bar
     cursor-color = ${theme.extra.orange}
