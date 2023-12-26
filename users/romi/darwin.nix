@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  currentSystemUser,
   ...
 }: {
   nixpkgs.overlays =
@@ -44,8 +45,8 @@
     };
   };
 
-  users.users.romi = {
-    home = "/Users/romi";
+  users.users."${currentSystemUser}" = {
+    home = "/Users/${currentSystemUser}";
     shell = pkgs.fish;
   };
 }
