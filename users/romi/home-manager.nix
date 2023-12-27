@@ -55,6 +55,7 @@ in {
       pkgs.less
       pkgs.fd
       pkgs.mercurial
+      pkgs.openssh
       pkgs.par
       pkgs.plan9port
       pkgs.rc-9front
@@ -94,18 +95,27 @@ in {
       pkgs.valgrind
     ]);
 
-  home.sessionVariables = {
-    BIN_PATH = "$HOME/bin/${currentSystem}";
-    PLAN9 = "${pkgs.plan9port}/plan9";
-    LANG = "en_US.UTF-8";
-    LC_CTYPE = "en_US.UTF-8";
-    LC_ALL = "en_US.UTF-8";
-    PAGER = "less -FirSwX";
-    VISUAL = "$EDITOR";
-    MBLAZE = "$HOME/.config/mblaze";
-    MBLAZE_PAGER = "less -cR";
-    MBLAZE_LESSKEY = "$MBLAZE/mlesskey";
-  };
+  home.sessionVariables =
+    {
+      BIN_PATH = "$HOME/bin/${currentSystem}";
+      PLAN9 = "${pkgs.plan9port}/plan9";
+      LANG = "en_US.UTF-8";
+      LC_CTYPE = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
+      PAGER = "less -FirSwX";
+      VISUAL = "$EDITOR";
+      MBLAZE = "$HOME/.config/mblaze";
+      MBLAZE_PAGER = "less -cR";
+      MBLAZE_LESSKEY = "$MBLAZE/mlesskey";
+    }
+    // (
+      if isDarwin
+      then {
+        # Git doesn’t respect ssh’s IdentityAgent.
+        SSH_AUTH_SOCK = "$HOME/.strongbox/agent.sock";
+      }
+      else {}
+    );
 
   #################
   # Programs Config
@@ -148,7 +158,6 @@ in {
         lsa = "eza -1a";
         lsf = "eza -la --time-style=$EZA_TIME_STYLE";
         tree = "eza --tree";
-        # fnix = "nix shell";
       }
       // (
         if isLinux
@@ -192,9 +201,9 @@ in {
     ./ghostty.nix
     ./git.nix
     ./helix.nix
-    # ./keepassxc.nix
     ./mblaze.nix
     ./mercurial.nix
     ./openbox
+    ./ssh.nix
   ];
 }
