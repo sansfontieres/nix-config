@@ -7,4 +7,7 @@ ifeq ($(UNAME), Darwin)
 	./result/sw/bin/darwin-rebuild switch --flake "$$(pwd)#${MACHINE}"
 else
 	sudo nixos-rebuild switch --flake "$$(pwd)#${MACHINE}"
+
+	# https://github.com/ryantm/agenix/issues/50
+	systemctl --user start agenix.service
 endif
