@@ -6,10 +6,12 @@
   colors = import ./colors.nix;
   theme = colors.hito_light;
   ghostty_path = "${config.xdg.configHome}/ghostty";
+
   font_size =
     if pkgs.stdenv.isDarwin
     then "13"
     else "12";
+
   extra_keybinds =
     if pkgs.stdenv.isLinux
     then ''

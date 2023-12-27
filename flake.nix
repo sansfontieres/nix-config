@@ -34,6 +34,7 @@
       url = "github:zigtools/zls";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     ghostty = {
       url = "git+ssh://git@github.com/mitchellh/ghostty";
     };
