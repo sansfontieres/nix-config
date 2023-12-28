@@ -60,9 +60,14 @@
 
     # Desktop
     inputs.ghostty.packages."${currentSystem}".default
+
     pkgs.arc-icon-theme
+    pkgs.catclock
+    pkgs.featherpad
     pkgs.firefox
     pkgs.phantomstyle
+    pkgs.tailscale-systray
+    pkgs.xclip
   ];
 
   fonts.packages = with pkgs; [
