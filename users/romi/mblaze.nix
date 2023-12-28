@@ -1,20 +1,14 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
-  mblaze_path = "${config.xdg.configHome}/mblaze";
-in {
-  home.file."${mblaze_path}/filter".text = ''
+{pkgs, ...}: {
+  xdg.configFile."mblaze/filter".text = ''
     text/plain: mflow -f
     text/html: w3m -dump -o display_link_number=1 -I $PIPE_CHARSET -T text/html
   '';
 
-  home.file."${mblaze_path}/headers".text = ''
+  xdg.configFile."mblaze/headers".text = ''
     Content-Type: text/plain; charset=UTF-8; format=flowed
   '';
 
-  home.file."${mblaze_path}/profile".text = ''
+  xdg.configFile."mblaze/profile".text = ''
     Sendmail: ${pkgs.msmtp}/bin/msmtp
     Sendmail-Args: --read-envelope-from --read-recipients
     Outbox: ~/tmp/mail/Drafts
@@ -24,7 +18,7 @@ in {
     Scan-Format: %-3n %c%u%r %19d %19f %t %2i%s
   '';
 
-  home.file."${mblaze_path}/mlesskey".text = ''
+  xdg.configFile."mblaze/mlesskey".text = ''
     R shell mrep\n
     D shell mflag -S . && mrefile . $MAILDIR/Trash\n
     Y shell mflag -S . && mrefile . $MAILDIR/Archive\n
