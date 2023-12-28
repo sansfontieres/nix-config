@@ -18,6 +18,16 @@
       keybind = super+t=new_tab
     ''
     else "";
+
+  extra_config =
+    if pkgs.stdenv.isLinux
+    then ''
+      macos-option-as-alt = left
+      gtk-titlebar = false
+    ''
+    else ''
+      window-theme = dark
+    '';
 in {
   home.file."${ghostty_path}/config".text = ''
     font-family = "MD IO"
@@ -25,11 +35,9 @@ in {
     font-feature = "zero"
     font-size = ${font_size}
 
-    macos-option-as-alt = left
     mouse-hide-while-typing = false
-    window-theme = dark
 
-    gtk-titlebar = false
+    ${extra_config}
 
     keybind = super+f=toggle_split_zoom
     keybind = super+shift+h=goto_split:left
