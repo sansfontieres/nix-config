@@ -1,11 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   colors = import ./colors.nix;
   theme = colors.hito_light;
-  ghostty_path = "${config.xdg.configHome}/ghostty";
 
   font_size =
     if pkgs.stdenv.isDarwin
@@ -22,14 +17,14 @@
   extra_config =
     if pkgs.stdenv.isLinux
     then ''
-      macos-option-as-alt = left
       gtk-titlebar = false
     ''
     else ''
+      macos-option-as-alt = left
       window-theme = dark
     '';
 in {
-  home.file."${ghostty_path}/config".text = ''
+  xdg.configFile."ghostty/config".text = ''
     font-family = "MD IO"
     font-feature = "calt"
     font-feature = "zero"
