@@ -201,6 +201,7 @@ in {
     ./ghostty.nix
     ./git.nix
     ./helix.nix
+    ./lxqt
     ./mblaze.nix
     ./mercurial.nix
     ./openbox

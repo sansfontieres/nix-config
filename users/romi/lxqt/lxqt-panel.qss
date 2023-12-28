@@ -1,0 +1,65 @@
+/*
+ * Modified System theme
+ */
+
+/* General panel settings */
+LXQtPanel #BackgroundWidget {
+    background: palette(window);
+}
+
+/* TaskBar */
+#TaskBar QToolButton {
+    margin: 2px 1px;
+}
+
+#TaskBar QToolButton[urgent="true"] {
+    color: palette(highlighted-text);
+    background: palette(highlight);
+}
+
+#TaskBar QToolButton:hover, #TaskBar QToolButton:on {
+    background: palette(window);
+}
+
+/* Desktopswitch */
+#DesktopSwitch QToolButton {
+    margin: 1px 2px;
+}
+
+#DesktopSwitch QToolButton[urgent="true"] {
+    color: palette(highlighted-text);
+    background: palette(highlight);
+}
+
+/* KbIndicator */
+#KbIndicator QLabel:disabled {
+    color: palette(text);
+}
+
+#KbIndicator QLabel:enabled {
+    color: palette(highlighted-text);
+    background: palette(highlight);
+}
+
+/* Spacer */
+#Spacer {
+    background-position: center center;
+}
+
+#Spacer[orientation="horizontal"] {
+    background-repeat: repeat-y;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#Spacer[orientation="vertical"] {
+    background-repeat: repeat-x;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+/* Main menu plugin */
+#MainMenu {
+    /* Intentional broken link */
+    qproperty-icon: url(mainmenu.svg);
+}
