@@ -28,7 +28,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.xkbOptions = "ctrl:swapcaps";
+  services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Enable the LXQT Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
