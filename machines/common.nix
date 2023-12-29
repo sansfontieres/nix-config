@@ -1,4 +1,5 @@
 {
+  pkgs,
   currentSystem,
   currentSystemName,
   currentSystemUser,
@@ -20,5 +21,7 @@
   networking.hostName = currentSystemName;
   environment.systemPackages = [
     inputs.agenix.packages."${currentSystem}".default
+
+    pkgs.gitFull
   ];
 }

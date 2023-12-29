@@ -45,7 +45,6 @@ in {
       pkgs.fzf
       pkgs.fzy
       pkgs.gh
-      pkgs.gitFull
       pkgs.gnumake # :^(
       pkgs.helix
       pkgs.htop
