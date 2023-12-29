@@ -200,6 +200,7 @@ in {
     ./dircolors.nix
     ./ghostty.nix
     ./git.nix
+    ./gtk.nix
     ./helix.nix
     ./lxqt
     ./mblaze.nix

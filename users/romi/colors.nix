@@ -1,5 +1,6 @@
 {
   # TODO: Rework this
+  # TODO: Implement hexToRGB
   hito_light = {
     background = "#fdfdfd";
     foreground = "#3d3d3d";
@@ -38,6 +39,7 @@
       specials = "#fed200";
       selection = "#e2e3fa";
     };
+
     diffs = {
       bg = {
         minus = "#ffdfdc";
