@@ -195,6 +195,7 @@ in {
 
   imports = [
     inputs.agenix.homeManagerModules.default
+
     ./bat.nix
     ./dircolors.nix
     ./ghostty.nix
@@ -205,6 +206,7 @@ in {
     ./mblaze.nix
     ./mercurial.nix
     ./openbox
+    ./scripts.nix
     ./ssh.nix
   ];
 }

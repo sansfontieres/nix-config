@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+font=/mnt/font/MDIO-Regular/14a/font
+
+fontsrv & sam &

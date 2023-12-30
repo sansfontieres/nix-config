@@ -1,0 +1,23 @@
+#!/usr/bin/env rc
+
+ifs='
+'
+msg=()
+9p read plumb/runner | while (line=`{9 read}) {
+  msg=($msg $line)
+  if (~ $#msg 7) {
+    wdir=$msg(3)
+    cmd=$msg(7)
+    tput clear
+
+    cd $wdir
+    switch $cmd {
+    case 'exit'
+      exit 0
+    case *
+      eval $cmd
+    }
+    printf '\n🐰Plumber: command done (%s)\n' $status
+    msg=()
+  }
+}
