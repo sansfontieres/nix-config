@@ -51,6 +51,7 @@ in {
       pkgs.hut
       pkgs.jq
       pkgs.keepassxc
+      pkgs.kitty # For the protocol things
       pkgs.less
       pkgs.fd
       pkgs.mercurial

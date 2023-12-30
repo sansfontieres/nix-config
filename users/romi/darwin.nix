@@ -27,7 +27,6 @@
       "figma"
       "firefox"
       "google-chrome"
-      "kitty" # For the protocol things
       "microsoft-excel" # Huge
       "openemu"
       "robofont"
