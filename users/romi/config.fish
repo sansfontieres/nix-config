@@ -26,13 +26,6 @@ function fish_prompt --description 'Write out the prompt'
     prompt $status
 end
 
-function load_work_stash
-    # TODO: asdf and brew begone
-    . "$HOME"/.asdf/asdf.fish
-    source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
-    rubocop --start-server
-end
-
 function load_opam
     eval "$(opam env)"
 end

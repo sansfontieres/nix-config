@@ -65,12 +65,11 @@ in {
       pkgs.rlwrap
       pkgs.samurai
       pkgs.tlsclient
+      pkgs.watch
       pkgs._9pro
 
       # Compilers/interpreters and tools
-      # pkgs.opam
-      # pkgs.fpc
-      # pkgs.femtolisp-unstable
+      pkgs.alejandra
       pkgs.janet
       pkgs.jpm
       pkgs.lldb_16
@@ -78,16 +77,19 @@ in {
       pkgs.zigpkgs.master
       pkgs.zls
 
-      # Misc
+      # Email & Comm
+      pkgs.catgirl
       pkgs.isync
       pkgs.mblaze
       pkgs.msmtp
-      pkgs.catgirl
-      pkgs.alejandra
       pkgs.notmuch
-      pkgs.universal-ctags
       pkgs.w3m
-      pkgs.watch
+
+      # Misc
+      # Those are broken
+      # pkgs.opam
+      # pkgs.fpc
+      # pkgs.femtolisp-unstable
     ]
     ++ (lib.optionals isDarwin [
       pkgs.cachix
@@ -164,26 +166,17 @@ in {
       "set -g SHELL ${pkgs.fish}/bin/fish"
     ]);
 
-    shellAliases =
-      {
-        cp = "cp -i";
-        mv = "mv -i";
-        rm = "rm -i";
-        df = "df -h";
-        ls = "eza";
-        ls1 = "eza -1";
-        lsa = "eza -1a";
-        lsf = "eza -la --time-style=$EZA_TIME_STYLE";
-        tree = "eza --tree";
-      }
-      // (
-        if isLinux
-        then {
-          pbcopy = "xclip";
-          pbpaste = "xclip -o";
-        }
-        else {}
-      );
+    shellAliases = {
+      cp = "cp -i";
+      mv = "mv -i";
+      rm = "rm -i";
+      df = "df -h";
+      ls = "eza";
+      ls1 = "eza -1";
+      lsa = "eza -1a";
+      lsf = "eza -la --time-style=$EZA_TIME_STYLE";
+      tree = "eza --tree";
+    };
 
     functions = {
       catgirls.body = ''
@@ -202,7 +195,7 @@ in {
       '';
 
       gc.body = ''
-        rlwrap -a'XXXXXXwth' -s 0 -t dumb ${pkgs._9pro}/bin/9gc -e romi
+        ${pkgs.rlwrap}/bin/rlwrap -a'XXXXXXwth' -s 0 -t dumb ${pkgs._9pro}/bin/9gc -e romi
       '';
 
       prompt.body = ''

@@ -1,4 +1,4 @@
-{currentSystem, ...}: let
+let
   script_path = "bin/scripts";
 in {
   home.file = {
