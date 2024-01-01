@@ -191,8 +191,8 @@ in {
         case 1
           while true
             ${pkgs.catgirl}/bin/catgirl \
-            --host fugu.sansfontieres.com \
-            --pass $(cat ${config.age.secrets.catgirls.path}) \
+            --host chat.sr.ht \
+            --pass $(${pkgs.coreutils}/bin/cat ${config.age.secrets.catgirls.path}) \
             --user romi/$argv[1]@${currentSystemName} \
             --hash 0,15 --quiet --log
           end
