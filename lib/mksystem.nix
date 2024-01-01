@@ -6,6 +6,7 @@
   system,
   user,
   darwin ? false,
+  desktop ? false,
 }: let
   OSConfigFile =
     if darwin
@@ -51,6 +52,7 @@ in
           currentSystem = system;
           currentSystemName = name;
           currentSystemUser = user;
+          isDesktop = desktop;
         };
       }
 
@@ -59,6 +61,7 @@ in
           currentSystem = system;
           currentSystemName = name;
           currentSystemUser = user;
+          isDesktop = desktop;
           inputs = inputs;
         };
       }

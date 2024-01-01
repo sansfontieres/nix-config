@@ -3,6 +3,7 @@
   currentSystem,
   currentSystemName,
   currentSystemUser,
+  isDesktop ? false,
   ...
 }: {
   config,
@@ -86,8 +87,30 @@ in {
       pkgs.cachix
     ])
     ++ (lib.optionals isLinux [
+      # Compilers/interpreters and tools
       pkgs.gdb
       pkgs.valgrind
+    ])
+    ++ (lib.optionals (isLinux && isDesktop) [
+      # Terminal
+      inputs.ghostty.packages."${currentSystem}".default
+
+      # Desktop utils
+      pkgs.catclock
+      pkgs.featherpad
+      pkgs.tailscale-systray
+      pkgs.xclip
+
+      # Internet
+      pkgs.firefox
+      pkgs.fluent-reader
+      pkgs.rssguard
+
+      # Libraries
+      pkgs.phantomstyle
+
+      # Theming
+      pkgs.arc-icon-theme
     ]);
 
   home.sessionVariables =

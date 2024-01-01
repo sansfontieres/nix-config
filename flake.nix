@@ -58,6 +58,7 @@
     nixosConfigurations.innocence = mkSystem "innocence" {
       system = "x86_64-linux";
       user = "romi";
+      desktop = true;
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {

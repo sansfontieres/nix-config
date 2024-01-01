@@ -1,13 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  inputs,
-  config,
-  pkgs,
-  currentSystem,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
     ./common.nix
@@ -55,19 +49,6 @@
   };
 
   environment.systemPackages = [
-    # Tools
-    pkgs.tailscale
-
-    # Desktop
-    inputs.ghostty.packages."${currentSystem}".default
-
-    pkgs.arc-icon-theme
-    pkgs.catclock
-    pkgs.featherpad
-    pkgs.firefox
-    pkgs.phantomstyle
-    pkgs.tailscale-systray
-    pkgs.xclip
   ];
 
   fonts.packages = with pkgs; [
