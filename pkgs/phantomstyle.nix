@@ -1,7 +1,7 @@
 {
-  stdenv,
-  libsForQt5,
   fetchFromGitHub,
+  libsForQt5,
+  stdenv,
 }:
 stdenv.mkDerivation {
   name = "phantomstyle";

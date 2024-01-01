@@ -1,8 +1,8 @@
 {
-  inputs,
+  agenix,
+  ghostty,
   currentSystem,
   currentSystemName,
-  currentSystemUser,
   isDesktop ? false,
   ...
 }: {
@@ -93,7 +93,7 @@ in {
     ])
     ++ (lib.optionals (isLinux && isDesktop) [
       # Terminal
-      inputs.ghostty.packages."${currentSystem}".default
+      ghostty.packages."${currentSystem}".default
 
       # Desktop utils
       pkgs.catclock
@@ -219,7 +219,7 @@ in {
   };
 
   imports = [
-    inputs.agenix.homeManagerModules.default
+    agenix.homeManagerModules.default
 
     ./bat.nix
     ./dircolors.nix

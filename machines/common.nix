@@ -1,9 +1,8 @@
 {
-  pkgs,
+  agenix,
   currentSystem,
   currentSystemName,
-  currentSystemUser,
-  inputs,
+  pkgs,
   ...
 }: {
   nix = {
@@ -20,7 +19,7 @@
 
   networking.hostName = currentSystemName;
   environment.systemPackages = [
-    inputs.agenix.packages."${currentSystem}".default
+    agenix.packages."${currentSystem}".default
 
     pkgs.gitFull
   ];

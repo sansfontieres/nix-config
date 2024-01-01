@@ -41,30 +41,38 @@
   };
 
   outputs = {
-    self,
-    nixpkgs,
     agenix,
-    home-manager,
     darwin,
+    ghostty,
+    home-manager,
+    nixpkgs,
+    zig,
     ...
-  } @ inputs: let
+  }: let
     overlays = [
-      inputs.zig.overlays.default
+      zig.overlays.default
     ];
     mkSystem = import ./lib/mksystem.nix {
-      inherit overlays nixpkgs inputs;
+      inherit
+        agenix
+        darwin
+        ghostty
+        home-manager
+        nixpkgs
+        overlays
+        ;
     };
   in {
     nixosConfigurations.innocence = mkSystem "innocence" {
       system = "x86_64-linux";
       user = "romi";
-      desktop = true;
+      isDesktop = true;
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {
       system = "aarch64-darwin";
       user = "romi";
-      darwin = true;
+      isDarwin = true;
     };
   };
 }

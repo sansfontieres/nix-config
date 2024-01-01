@@ -1,7 +1,7 @@
 {
-  stdenv,
-  lib,
   fetchFromSourcehut,
+  lib,
+  stdenv,
 }:
 stdenv.mkDerivation {
   pname = "9pro";

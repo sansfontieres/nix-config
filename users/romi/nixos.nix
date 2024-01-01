@@ -1,6 +1,6 @@
 {
-  pkgs,
   currentSystemUser,
+  pkgs,
   ...
 }: {
   nixpkgs.overlays = import ../../lib/overlays.nix ++ [];

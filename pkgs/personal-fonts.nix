@@ -1,7 +1,4 @@
-{
-  stdenv,
-  lib,
-}:
+{stdenv}:
 stdenv.mkDerivation {
   name = "personnal-fonts";
 

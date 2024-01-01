@@ -1,15 +1,18 @@
 {
-  overlays,
+  agenix,
+  darwin,
+  ghostty,
+  home-manager,
   nixpkgs,
-  inputs,
+  overlays,
 }: name: {
   system,
   user,
-  darwin ? false,
-  desktop ? false,
+  isDarwin ? false,
+  isDesktop ? false,
 }: let
   OSConfigFile =
-    if darwin
+    if isDarwin
     then "darwin.nix"
     else "nixos.nix";
 
@@ -18,21 +21,21 @@
   userHMConfig = ../users/${user}/home-manager.nix;
 
   systemFunc =
-    if darwin
-    then inputs.darwin.lib.darwinSystem
+    if isDarwin
+    then darwin.lib.darwinSystem
     else nixpkgs.lib.nixosSystem;
 
   # TODO: Check how I can play with agenix system-wide rather than with
   # home-manager
   agenixModules =
-    if darwin
-    then inputs.agenix.darwinModules
-    else inputs.agenix.nixosModules;
+    if isDarwin
+    then agenix.darwinModules
+    else agenix.nixosModules;
 
-  home-manager =
-    if darwin
-    then inputs.home-manager.darwinModules
-    else inputs.home-manager.nixosModules;
+  homeManagerModule =
+    if isDarwin
+    then home-manager.darwinModules
+    else home-manager.nixosModules;
 in
   systemFunc rec {
     inherit system;
@@ -43,26 +46,27 @@ in
 
       machineConfig
       userOSConfig
-      home-manager.home-manager
+      homeManagerModule.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.${user} = import userHMConfig {
-          inputs = inputs;
+          agenix = agenix;
           currentSystem = system;
           currentSystemName = name;
           currentSystemUser = user;
-          isDesktop = desktop;
+          ghostty = ghostty;
+          isDesktop = isDesktop;
         };
       }
 
       {
         config._module.args = {
+          agenix = agenix;
           currentSystem = system;
           currentSystemName = name;
           currentSystemUser = user;
-          isDesktop = desktop;
-          inputs = inputs;
+          isDesktop = isDesktop;
         };
       }
     ];
