@@ -26,8 +26,10 @@
       "figma"
       "firefox"
       "google-chrome"
+      "mailmate"
       "microsoft-excel" # Huge
       "openemu"
+      "ripcord"
       "robofont"
       "spotify" # :^(
       "transmit"

@@ -106,6 +106,9 @@ in {
       pkgs.fluent-reader
       pkgs.rssguard
 
+      # Email & Comm
+      pkgs.ripcord
+
       # Libraries
       pkgs.phantomstyle
 
