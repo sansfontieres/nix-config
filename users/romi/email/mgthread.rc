@@ -1,0 +1,7 @@
+#!/usr/bin/env rc
+# Find thread of the current email
+
+mid=`{mhdr -h message-id | tr -d '<>'}
+thread=`{notmuch search --output threads mid:$mid}
+notmuch search --output files --format text $thread
+

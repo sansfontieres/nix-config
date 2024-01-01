@@ -1,0 +1,10 @@
+#!/usr/bin/env rc
+# lists drafts
+
+option='-D'
+switch($1) {
+case -s
+  option='-S'
+}
+
+mlist $option $MAILDIR/Drafts

@@ -25,6 +25,7 @@ in {
     identityPaths = ["${config.home.homeDirectory}/.ssh/${currentSystemName}"];
     secrets = {
       catgirls.file = ../../secrets/catgirls.age;
+      telecom.file = ../../secrets/telecom.age;
     };
   };
 
@@ -49,6 +50,7 @@ in {
       pkgs.helix
       pkgs.htop
       pkgs.hut
+      pkgs.imagemagick
       pkgs.jq
       pkgs.keepassxc
       pkgs.kitty # For the protocol things
@@ -98,15 +100,30 @@ in {
   home.sessionVariables =
     {
       BIN_PATH = "$HOME/bin/${currentSystem}";
+      SCRIPT_PATH = "$HOME/bin/scripts";
       PLAN9 = "${pkgs.plan9port}/plan9";
+
       LANG = "en_US.UTF-8";
       LC_CTYPE = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
-      PAGER = "less -FirSwX";
+
+      PAGER = "${pkgs.less}/bin/less -FirSwX";
       VISUAL = "$EDITOR";
+
+      MAILDIR = "$HOME/Mail";
       MBLAZE = "$HOME/.config/mblaze";
-      MBLAZE_PAGER = "less -cR";
+      MBLAZE_PAGER = "${pkgs.less}/bin/less -cR";
       MBLAZE_LESSKEY = "$MBLAZE/mlesskey";
+      MCOLOR_CUR = 1;
+      MCOLOR_MISS = 2;
+      MCOLOR_FROM = 3;
+      MCOLOR_HEADER = 3;
+      MCOLOR_FOOTER = 7;
+      MCOLOR_SIG = 2;
+      MCOLOR_SEP = 7;
+      MCOLOR_QUOTE = 244;
+      MCOLOR_QQUOTE = 246;
+      MCOLOR_QQQUOTE = 250;
     }
     // (
       if isDarwin
@@ -204,7 +221,7 @@ in {
     ./gtk.nix
     ./helix.nix
     ./lxqt
-    ./mblaze.nix
+    ./email
     ./mercurial.nix
     ./openbox
     ./scripts.nix

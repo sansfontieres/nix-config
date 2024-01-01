@@ -1,0 +1,7 @@
+#!/usr/bin/env rc
+# Turn notmuch query into a list of files, ready for mblaze
+
+threads=`{notmuch search --output threads $"*}
+if (~ $#threads 0) { echo Query returned nothing; exit }
+notmuch search --output files --format text $threads
+

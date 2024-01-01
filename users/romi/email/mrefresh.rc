@@ -1,0 +1,19 @@
+#!/usr/bin/env rc
+
+flags=()
+mdirs=()
+for (arg in $*) {
+  switch($arg) {
+  case -*
+    flags=($flags $arg)
+  case *
+    mdirs=($mdirs $arg)
+  }
+  shift
+}
+
+if (~ $#mdirs 0) {
+  mdirs=$MAILDIR/Inbox
+}
+
+mlist $"flags $"mdirs | msort -d | mseq -S

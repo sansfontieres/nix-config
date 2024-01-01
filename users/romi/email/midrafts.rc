@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+for (sent in `{mldrafts -s}) mrefile $sent $MAILDIR/Inbox
+
+mrefresh

@@ -1,0 +1,103 @@
+#!/usr/bin/env rc
+# mblaze client I guess?
+
+tmp=/tmp/$pid
+TMAILSEQ=$MBLAZE/tseq
+
+refresh_args=$*
+threaded=false
+
+fn toggle_thread {
+  t=$1
+
+  if (~ $t false) {
+    mthread | mseq -S
+    threaded=true
+  }
+  if not {
+    # Keep the same base mseq
+    # Don’t call mrefresh
+    mseq -r | msort -d | mseq -S
+    threaded=false
+  }
+}
+
+fn negative_matcher {
+  if (~ $1 true) echo false
+  if not echo true
+}
+
+while () {
+  rm -f $TMSAILSEQ
+  save=false
+  query_full_thread=false
+  mails=()
+
+  mscan | \
+  fzf --reverse -m --margin 1,1 --preview-window down:60% \
+  --preview 'mshow -N $(sed -n {1}p $MBLAZE/seq) | mcolor' \
+  --expect 'ctrl-s,ctrl-r,ctrl-t,ctrl-f,ctrl-l' \
+  > $tmp
+
+  lines=`{wc -l < $tmp | tr -d ' '}
+
+  if (~ $lines 0) { rm $tmp ;exit }
+  if not {
+    if (~ `{sed 1q $tmp} '') {
+      LESSKEYIN=$MBLAZE_LESSKEY mshow -N `{sed -n 2p $tmp | sed -n 's/^\([0-9]\{1,6\}\).*/\1/p'}
+    }
+    if not {
+      directory=''
+      flags=()
+      sed -in 's/^\([0-9]\{1,6\}\).*/\1/g' $tmp
+
+      for (arg in `{cat $tmp}) {
+        if (~ $arg `{sed 1q $tmp}) {
+          switch($arg) {
+          case ctrl-s
+            save=true
+          case ctrl-r
+            mrefresh $*
+            toggle_thread `{negative_matcher $threaded}
+          case ctrl-l
+            mrefresh -F $*
+            toggle_thread `{negative_matcher $threaded}
+          case ctrl-t
+            toggle_thread $threaded
+          case ctrl-f
+            query_full_thread=true
+          case *
+            echo Unknown command
+            exit
+          }
+        }
+
+        mail=`{echo $arg |sed -n 's/^\([0-9]\{1,6\}\).*/\1/p'}
+
+        if (~ $#mail 1 && ~ $save true) {
+          mseq $mail >> $TMAILSEQ
+        }
+        mails=($mails $mail)
+      }
+
+      if (~ $save true) {
+        bak $MBLAZE/seq
+        mv $TMAILSEQ $MBLAZE/seq
+        echo Replaced the seq file, you can hold the process
+        mv $MBLAZE/seq.bak $MBLAZE/seq
+      }
+
+      if (~ $query_full_thread true) {
+        if (~ $#mails 1) {
+          mseq -C $mails(1) && mgthread | mseq -S
+          toggle_thread `{negative_matcher $threaded}
+        }
+        if not {
+          echo Please query one mail at a time
+        }
+      }
+    }
+  }
+}
+
+rm $tmp

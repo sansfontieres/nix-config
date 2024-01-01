@@ -1,9 +1,8 @@
+# asymmetric cryptography :^(
 let
   inherit (import ../keys.nix) users hosts;
+  publicKeys = builtins.attrValues users ++ builtins.attrValues hosts;
 in {
-  # asymmetric cryptography :^(
-  "catgirls.age".publicKeys = builtins.attrValues {
-    inherit (users) romi;
-    inherit (hosts) macbook-pro-m1 innocence;
-  };
+  "catgirls.age".publicKeys = publicKeys;
+  "telecom.age".publicKeys = publicKeys;
 }
