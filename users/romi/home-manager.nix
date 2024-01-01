@@ -36,28 +36,22 @@ in {
   home.packages =
     [
       # Utils
-      pkgs.bat
       pkgs.cmake
       pkgs.coreutils
       pkgs.curl
-      pkgs.delta
       pkgs.eza
       pkgs.file
       pkgs.fzf
       pkgs.fzy
-      pkgs.gh
       pkgs.gnumake # :^(
-      pkgs.helix
-      pkgs.htop
       pkgs.hut
+      pkgs.htop
       pkgs.imagemagick
       pkgs.jq
       pkgs.keepassxc
       pkgs.kitty # For the protocol things
       pkgs.less
       pkgs.fd
-      pkgs.mercurial
-      pkgs.openssh
       pkgs.par
       pkgs.plan9port
       pkgs.rc-9front
@@ -79,10 +73,7 @@ in {
 
       # Email & Comm
       pkgs.catgirl
-      pkgs.isync
       pkgs.mblaze
-      pkgs.msmtp
-      pkgs.notmuch
       pkgs.w3m
 
       # Misc
