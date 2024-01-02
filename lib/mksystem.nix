@@ -16,9 +16,13 @@
     then "darwin.nix"
     else "nixos.nix";
 
-  machineConfig = ../machines/${name}.nix;
-  userOSConfig = ../users/${user}/${OSConfigFile};
-  userHMConfig = ../users/${user}/home-manager.nix;
+  currentSystem = system;
+  currentSystemName = name;
+  currentSystemUser = user;
+
+  machineConfig = ../machines/${currentSystemName}.nix;
+  userOSConfig = ../users/${currentSystemUser}/${OSConfigFile};
+  userHMConfig = ../users/${currentSystemUser}/home-manager.nix;
 
   systemFunc =
     if isDarwin
@@ -37,7 +41,7 @@
     then home-manager.darwinModules
     else home-manager.nixosModules;
 in
-  systemFunc rec {
+  systemFunc {
     inherit system;
 
     modules = [
@@ -50,23 +54,26 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.users.${user} = import userHMConfig {
-          agenix = agenix;
-          currentSystem = system;
-          currentSystemName = name;
-          currentSystemUser = user;
-          ghostty = ghostty;
-          isDesktop = isDesktop;
+        home-manager.users.${currentSystemUser} = import userHMConfig {
+          inherit
+            agenix
+            currentSystem
+            currentSystemName
+            ghostty
+            isDarwin
+            isDesktop
+            ;
         };
       }
 
       {
         config._module.args = {
-          agenix = agenix;
-          currentSystem = system;
-          currentSystemName = name;
-          currentSystemUser = user;
-          isDesktop = isDesktop;
+          inherit
+            agenix
+            currentSystem
+            currentSystemName
+            currentSystemUser
+            ;
         };
       }
     ];
