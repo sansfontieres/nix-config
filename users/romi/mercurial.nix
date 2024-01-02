@@ -5,7 +5,7 @@
       untrack = "rm -Af";
     };
     userName = "Romi Hervier";
-    userEmail = "r@sansfontieres.com";
+    userEmail = "romi@sansfontieres.com";
 
     extraConfig = {
       diff.git = 1;

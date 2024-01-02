@@ -7,7 +7,7 @@ in {
     lfs.enable = true;
 
     userName = "Romi Hervier";
-    userEmail = "r@sansfontieres.com";
+    userEmail = "romi@sansfontieres.com";
     signing = {
       key = keys.ssh.signing;
       signByDefault = true;

@@ -20,7 +20,7 @@
     primary = true;
     realName = "Romi Hervier";
     address = "romi@grtsk.net";
-    aliases = ["rh@grtsk.net" "r@sansfontieres.com"];
+    aliases = ["rh@grtsk.net" "romi@sansfontieres.com" "r@sansfontieres.com"];
     imap.host = "imap.fastmail.com";
     passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets.telecom.path}";
     maildir.path = "";

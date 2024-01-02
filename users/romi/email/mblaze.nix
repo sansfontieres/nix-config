@@ -25,7 +25,7 @@ in {
       Sendmail-Args: --read-envelope-from --read-recipients
       Outbox: ${config.accounts.email.accounts.telecom.maildir.absPath}/Drafts
       Local-Mailbox: romi <romi@grtsk.net>
-      Alternate-Mailboxes: Romi Hervier <r@sansfontieres.com>, Romi Hervier <rh@grtsk.net>
+      Alternate-Mailboxes: Romi Hervier <romi@sansfontieres.com>, Romi Hervier <rh@grtsk.net>
       FQDN: sansfontieres.com
       Scan-Format: %-3n %c%u%r %19d %19f %t %2i%s
     '';
