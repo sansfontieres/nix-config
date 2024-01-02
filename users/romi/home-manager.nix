@@ -82,6 +82,8 @@ in {
       # pkgs.opam
       # pkgs.fpc
       # pkgs.femtolisp-unstable
+
+      pkgs.bins
     ]
     ++ (lib.optionals isDarwin [
       pkgs.cachix

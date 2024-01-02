@@ -4,4 +4,6 @@ final: prev: {
 
   # NOTE: Private repos
   personal-fonts = final.callPackage ../pkgs/personal-fonts.nix {};
+
+  bins = final.callPackage ../pkgs/bins.nix {};
 }

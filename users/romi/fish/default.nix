@@ -42,10 +42,6 @@
       gc.body = ''
         ${pkgs.rlwrap}/bin/rlwrap -a'XXXXXXwth' -s 0 -t dumb ${pkgs._9pro}/bin/9gc -e romi
       '';
-
-      prompt.body = ''
-        printf "; "
-      '';
     };
   };
 }
