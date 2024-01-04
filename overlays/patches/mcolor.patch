@@ -1,0 +1,13 @@
+diff --git a/mcolor b/mcolor
+index d3a402a..764e937 100755
+--- a/mcolor
++++ b/mcolor
+@@ -13,7 +13,7 @@ no_color { print; next }
+ /^--- .* ---/ { print fg(co("SEP",242), $0); ftr = 0; sig = 0; next }
+ /^-----BEGIN .* SIGNATURE-----/ { sig = 1 }
+ nextmail && /^From:/ { hdr = 1 }
+-hdr && /^From:/ { print so(fg(co("FROM",119), $0)); next }
++hdr && /^(From|To|Subject):/ { print so(fg(co("FROM",119), $0)); next }
+ hdr { print fg(co("HEADER",120), $0); next }
+ ftr { print fg(co("FOOTER",244), $0); next }
+ /^-----BEGIN .* MESSAGE-----/ ||

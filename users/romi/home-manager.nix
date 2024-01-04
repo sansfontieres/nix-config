@@ -130,21 +130,6 @@ in {
 
       PAGER = "${pkgs.less}/bin/less -FirSwX";
       VISUAL = "$EDITOR";
-
-      MAILDIR = "$HOME/Mail";
-      MBLAZE = "$HOME/.config/mblaze";
-      MBLAZE_PAGER = "${pkgs.less}/bin/less -cR";
-      MBLAZE_LESSKEY = "$MBLAZE/mlesskey";
-      MCOLOR_CUR = 1;
-      MCOLOR_MISS = 2;
-      MCOLOR_FROM = 3;
-      MCOLOR_HEADER = 3;
-      MCOLOR_FOOTER = 7;
-      MCOLOR_SIG = 2;
-      MCOLOR_SEP = 7;
-      MCOLOR_QUOTE = 244;
-      MCOLOR_QQUOTE = 246;
-      MCOLOR_QQQUOTE = 250;
     }
     // (
       if isDarwin

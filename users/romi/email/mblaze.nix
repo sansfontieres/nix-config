@@ -48,11 +48,6 @@ in {
       executable = true;
     };
 
-    "${scripts_dir}/mcolor" = {
-      source = ./mcolor.awk;
-      executable = true;
-    };
-
     "${scripts_dir}/medraft" = {
       source = ./medraft.rc;
       executable = true;
