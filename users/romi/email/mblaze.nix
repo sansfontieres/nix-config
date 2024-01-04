@@ -84,11 +84,6 @@ in {
       executable = true;
     };
 
-    "${scripts_dir}/mquote" = {
-      source = ./mquote.sh;
-      executable = true;
-    };
-
     "${scripts_dir}/mrefresh" = {
       source = ./mrefresh.rc;
       executable = true;

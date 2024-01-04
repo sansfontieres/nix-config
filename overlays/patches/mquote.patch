@@ -1,0 +1,13 @@
+diff --git a/mquote b/mquote
+index 31af66b..9a53873 100755
+--- a/mquote
++++ b/mquote
+@@ -5,7 +5,7 @@
+ : ${from:=$(mhdr -d -h from "$1")}
+ : ${from:=Someone}
+ 
+-printf '%s wrote:\n' "$from"
++printf 'Quoth %s:\n' "$from"
+ { mshow -R "$1" || mshow -h '' -N "$1"; } |
+ 	sed -n '/^-- $/,$!p'   |                   # strip signature
+ 	sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' |    # strip empty lines
