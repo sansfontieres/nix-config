@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  xdg = config.xdg;
+in {
   imports = [
     ./mblaze.nix
   ];

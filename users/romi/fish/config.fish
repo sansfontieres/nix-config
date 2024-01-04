@@ -1,5 +1,3 @@
-set SYMLINK_PATH "$HOME/bin/symlinks"
-
 set -q PATH; or set PATH ''; set -gx PATH $SYMLINK_PATH $PATH
 set -q PATH; or set PATH ''; set -gx PATH $SCRIPT_PATH $PATH
 set -q PATH; or set PATH ''; set -gx PATH $BIN_PATH $PATH

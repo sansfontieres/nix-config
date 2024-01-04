@@ -13,6 +13,7 @@
 }: let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
+  homeDirectory = config.home.homeDirectory;
 in {
   home.stateVersion = "23.11";
 
@@ -120,8 +121,9 @@ in {
 
   home.sessionVariables =
     {
-      BIN_PATH = "$HOME/bin/${currentSystem}";
-      SCRIPT_PATH = "$HOME/bin/scripts";
+      BIN_PATH = "${homeDirectory}/bin/${currentSystem}"; # Quick and dirty builds
+      SCRIPT_PATH = "${homeDirectory}/bin/scripts";
+      SYMLINK_PATH = "${homeDirectory}/bin/symlinks"; # Mainly for macOS .app bins
       PLAN9 = "${pkgs.plan9port}/plan9";
 
       LANG = "en_US.UTF-8";
@@ -135,7 +137,7 @@ in {
       if isDarwin
       then {
         # Git doesn’t respect ssh’s IdentityAgent.
-        SSH_AUTH_SOCK = "$HOME/.strongbox/agent.sock";
+        SSH_AUTH_SOCK = "${homeDirectory}/.strongbox/agent.sock";
       }
       else {}
     );
