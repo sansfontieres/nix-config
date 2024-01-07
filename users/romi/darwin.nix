@@ -24,6 +24,7 @@
       "anki"
       "discord"
       "figma"
+      "fontgoggles"
       "firefox"
       "google-chrome"
       "mailmate"
