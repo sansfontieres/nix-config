@@ -35,88 +35,96 @@ in {
   # Packages
   #################
 
-  home.packages =
+  home.packages = with pkgs;
     [
       # Utils
-      pkgs.cmake
-      pkgs.coreutils
-      pkgs.curl
-      pkgs.eza
-      pkgs.file
-      pkgs.fzf
-      pkgs.fzy
-      pkgs.gnumake # :^(
-      pkgs.hut
-      pkgs.htop
-      pkgs.imagemagick
-      pkgs.jq
-      pkgs.keepassxc
-      pkgs.kitty # For the protocol things
-      pkgs.less
-      pkgs.fd
-      pkgs.par
-      pkgs.plan9port
-      pkgs.rc-9front
-      pkgs.ripgrep
-      pkgs.rlwrap
-      pkgs.samurai
-      pkgs.tlsclient
-      pkgs.watch
-      pkgs._9pro
+      cmake
+      coreutils
+      curl
+      eza
+      file
+      fzf
+      fzy
+      gnumake # :^(
+      hut
+      htop
+      imagemagick
+      jq
+      keepassxc
+      kitty # For the protocol things
+      less
+      fd
+      par
+      plan9port
+      rc-9front
+      ripgrep
+      rlwrap
+      samurai
+      tlsclient
+      watch
+      _9pro
 
       # Compilers/interpreters and tools
-      pkgs.alejandra
-      pkgs.janet
-      pkgs.jpm
-      pkgs.lldb_16
-      pkgs.nil
-      pkgs.zigpkgs.master
-      pkgs.zls
+      alejandra
+      janet
+      jpm
+      lldb_16
+      nil
+      zigpkgs.master
+      zls
+      (python311.withPackages (ps:
+        # Guido invaded the type design programming world
+          with ps; [
+            python-lsp-server
+            python-lsp-ruff
+          ]))
+      black
+      ruff
 
       # Email & Comm
-      pkgs.catgirl
-      pkgs.mblaze
-      pkgs.w3m
+      catgirl
+      mblaze
+      w3m
 
       # Misc
       # Those are broken
-      # pkgs.opam
-      # pkgs.fpc
-      # pkgs.femtolisp-unstable
+      # opam
+      # fpc
+      # femtolisp-unstable
 
-      pkgs.bins
+      bins
     ]
     ++ (lib.optionals isDarwin [
-      pkgs.cachix
+      cachix
     ])
     ++ (lib.optionals isLinux [
       # Compilers/interpreters and tools
-      pkgs.gdb
-      pkgs.valgrind
+      gdb
+      valgrind
     ])
     ++ (lib.optionals (isLinux && isDesktop) [
       # Terminal
       ghostty.packages."${currentSystem}".default
 
       # Desktop utils
-      pkgs.catclock
-      pkgs.featherpad
-      pkgs.tailscale-systray
-      pkgs.xclip
+      catclock
+      featherpad
+      tailscale-systray
+      xclip
 
       # Internet
-      pkgs.firefox
-      pkgs.fluent-reader
-      pkgs.rssguard
+      firefox
+      fluent-reader
+      rssguard
 
       # Email & Comm
-      pkgs.ripcord
+      ripcord
 
       # Libraries
-      pkgs.phantomstyle
+      phantomstyle
 
       # Theming
-      pkgs.arc-icon-theme
+      arc-icon-theme
     ]);
 
   home.sessionVariables =

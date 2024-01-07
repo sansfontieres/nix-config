@@ -69,11 +69,21 @@ in {
           ];
         };
       }
+
       {
         name = "nix";
         auto-format = true;
         formatter = {
           command = "${pkgs.alejandra}/bin/alejandra";
+        };
+      }
+
+      {
+        name = "python";
+        auto-format = true;
+        formatter = {
+          command = "${pkgs.black}/bin/black";
+          args = ["--quiet" "-"];
         };
       }
     ];
@@ -82,6 +92,14 @@ in {
       solargraph.config = {
         diagnostics = true;
         formatting = true;
+      };
+
+      pylsp = {
+        config.pylsp.plugins = {
+          ruff = {
+            enabled = true;
+          };
+        };
       };
     };
 

@@ -30,7 +30,7 @@
       "microsoft-excel" # Huge
       "openemu"
       "ripcord"
-      "robofont"
+      # "robofont" # Commented because I follow the beta
       "spotify" # :^(
       "transmit"
       "transmission" # :^)
