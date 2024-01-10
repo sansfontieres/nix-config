@@ -26,6 +26,7 @@ in {
   age = {
     identityPaths = ["${config.home.homeDirectory}/.ssh/${currentSystemName}"];
     secrets = {
+      cachix.file = ../../secrets/cachix.age;
       catgirls.file = ../../secrets/catgirls.age;
       telecom.file = ../../secrets/telecom.age;
     };
