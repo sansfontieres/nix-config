@@ -49,6 +49,9 @@ in {
           esc = ["collapse_selection" "keep_primary_selection"];
           "C-j" = "copy_selection_on_next_line";
           "C-k" = "copy_selection_on_prev_line";
+          space.t = {
+            w = ":toggle whitespace.render all none";
+          };
         };
       };
     };
