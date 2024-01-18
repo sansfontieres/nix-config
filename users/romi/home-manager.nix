@@ -139,7 +139,8 @@ in {
       LC_CTYPE = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
 
-      PAGER = "${pkgs.less}/bin/less -FirSwX";
+      PAGER = "${pkgs.less}/bin/less";
+      LESS = "-FirSwX";
       VISUAL = "$EDITOR";
     }
     // (
