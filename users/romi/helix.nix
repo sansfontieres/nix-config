@@ -264,7 +264,10 @@ in {
         fg = "bright_black";
         modifiers = ["italic"];
       };
-      "comment.documentation" = {modifiers = ["bold"];};
+      "comment.documentation" = {
+        fg = "bright_black";
+        modifiers = ["bold" "italic"];
+      };
 
       "variable" = "foreground";
       "variable.builtin" = {
