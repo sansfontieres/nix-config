@@ -145,7 +145,7 @@ in {
       "ui.virtual.whitespace" = {fg = "white";};
       "ui.virtual.indent-guide" = {fg = "bright_white";};
       "ui.virtual.ruler" = {
-        bg = "white";
+        bg = "bright_white";
         fg = "red";
       };
 
@@ -184,7 +184,7 @@ in {
         fg = "foreground";
       };
       "ui.menu.selected" = {
-        bg = "gray-3";
+        bg = "background";
         fg = "magenta";
       };
 
@@ -226,21 +226,20 @@ in {
       "attribute" = {modifiers = ["bold"];};
 
       "type" = {
-        fg = "bright_black";
+        fg = "gold";
         modifiers = ["bold"];
       };
-      "type.builtin" = {
-        fg = "bright_black";
-        modifiers = ["bold"];
-      };
-      "type.parameter" = {fg = "foreground";};
-      "type.enum" = {fg = "foreground";};
-      "type.enum.variant" = {fg = "foreground";};
+      # "type.builtin" = {
+      #   fg = "bright_black";
+      # };
+      # "type.parameter" = {fg = "foreground";};
+      # "type.enum" = {fg = "foreground";};
+      # "type.enum.variant" = {fg = "foreground";};
 
       "constructor" = {modifiers = ["bold"];};
       "constant" = "foreground";
-      "constant.builtin" = {modifiers = ["bold" "italic"];};
-      "constant.builtin.boolean" = {modifiers = ["bold" "italic"];};
+      # "constant.builtin" = {modifiers = ["bold" "italic"];};
+      # "constant.builtin.boolean" = {modifiers = ["bold" "italic"];};
       "constant.character.escape" = {
         fg = "bright_green";
         modifiers = ["bold"];
@@ -250,27 +249,24 @@ in {
 
       "string" = "green";
       "string.regexp" = "magenta";
-      "string.special.symbol" = {
-        fg = "green";
-        modifiers = ["bold"];
-      };
+      "string.special.symbol" = "gold";
 
       "comment" = {
         fg = "bright_black";
         modifiers = ["italic"];
       };
-      "comment.line" = {
-        fg = "bright_black";
-        modifiers = ["italic"];
-      };
-      "comment.block" = {
-        fg = "bright_black";
-        modifiers = ["italic"];
-      };
-      "comment.documentation" = {
-        fg = "bright_black";
-        modifiers = ["bold" "italic"];
-      };
+      # "comment.line" = {
+      #   fg = "bright_black";
+      #   modifiers = ["italic"];
+      # };
+      # "comment.block" = {
+      #   fg = "bright_black";
+      #   modifiers = ["italic"];
+      # };
+      # "comment.documentation" = {
+      #   fg = "bright_black";
+      #   modifiers = ["italic"];
+      # };
 
       "variable" = "foreground";
       "variable.builtin" = {
@@ -297,64 +293,45 @@ in {
       };
 
       "keyword" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
+        fg = "gold";
       };
-      "keyword.control" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
-      };
+      # "keyword.control" = {
+      #   fg = "bright_black";
+      # };
       "keyword.control.conditional" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
+        fg = "gold";
+        modifiers = ["italic"];
       };
-      "keyword.control.repeat" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
-      };
-      "keyword.control.import" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
-      };
-      "keyword.control.return" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
-      };
-      "keyword.control.exception" = {
-        fg = "foreground";
-        modifiers = ["italic" "bold"];
-      };
+      # "keyword.control.repeat" = {
+      #   modifiers = ["italic"];
+      # };
+      # "keyword.control.import" = {
+      #   modifiers = ["italic"];
+      # };
+      # "keyword.control.return" = {
+      #   modifiers = ["italic"];
+      # };
+      # "keyword.control.exception" = {
+      #   modifiers = ["italic"];
+      # };
 
-      "keyword.operator" = {fg = "bright_black";};
+      # "keyword.operator" = {fg = "bright_black";};
       "keyword.directive" = "orange";
-      "keyword.function" = {modifiers = ["bold"];};
-      "keyword.storage" = "foreground";
-      "keyword.storage.type" = {
-        fg = "foreground";
-        modifiers = ["bold"];
-      };
-      "keyword.storage.modifier" = {
-        fg = "foreground";
-        modifiers = ["bold"];
-      };
-      "keyword.storage.modifier.ref" = {
-        fg = "foreground";
-        modifiers = ["bold"];
-      };
+      # "keyword.function" = "foreground";
+      # "keyword.storage" = "foreground";
+      # "keyword.storage.type" = "foreground";
+      # "keyword.storage.modifier" = "foreground";
+      # "keyword.storage.modifier.ref" = "foreground";
       "keyword.special" = "red";
 
       "operator" = "bright_black";
 
-      "function" = {fg = "foreground";};
-      "function.builtin" = {
-        fg = "foreground";
-        modifiers = ["bold"];
-      };
-      "function.method" = {fg = "foreground";};
-      "function.macro" = {fg = "foreground";};
+      "function" = {modifiers = ["bold"];};
+      # "function.builtin" = {modifiers = ["bold"];};
+      "function.method" = {modifiers = [];};
+      # "function.macro" = {modifiers = ["bold"];};
       "function.special" = {
         fg = "orange";
-        modifiers = ["bold"];
       };
 
       "tag" = {fg = "foreground";};
@@ -435,7 +412,7 @@ in {
 
       palette = {
         foreground = theme_light.foreground;
-        bg = theme_light.background;
+        background = theme_light.background;
         black = theme_light.base16.black;
         red = theme_light.base16.red;
         green = theme_light.base16.green;
