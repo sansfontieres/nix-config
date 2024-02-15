@@ -18,7 +18,7 @@ in {
           skip-levels = 1;
         };
         soft-wrap = {
-          enable = true;
+          enable = false;
           max-indent-retain = 40;
         };
         statusline = {
@@ -51,6 +51,9 @@ in {
           "C-k" = "copy_selection_on_prev_line";
           space.t = {
             w = ":toggle whitespace.render all none";
+            t = ":toggle soft-wrap.enable";
+            r = ":set rulers [80,100]";
+            R = ":set rulers []";
           };
         };
       };
