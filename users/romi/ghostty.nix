@@ -25,9 +25,10 @@
     '';
 in {
   xdg.configFile."ghostty/config".text = ''
-    font-family = "MD IO"
-    font-feature = "calt"
-    font-feature = "zero"
+    # font-family = "MD IO"
+    # font-feature = "zero"
+    # font-feature = "calt"
+    font-family = "PragmataPro Mono"
     font-size = ${font_size}
 
     mouse-hide-while-typing = false
