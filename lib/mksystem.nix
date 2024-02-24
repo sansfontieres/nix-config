@@ -80,6 +80,7 @@ in
             currentSystem
             currentSystemName
             currentSystemUser
+            isDarwin
             ;
         };
       }

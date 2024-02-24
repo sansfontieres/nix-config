@@ -2,6 +2,7 @@
   agenix,
   currentSystem,
   currentSystemName,
+  isDarwin,
   pkgs,
   ...
 }: {
@@ -29,12 +30,18 @@
 
   networking.hostName = currentSystemName;
 
-  fonts.packages = with pkgs; [
-    inter
+  # nix-darwin is late on this one
+  fonts =
+    if !isDarwin
+    then {
+      packages = with pkgs; [
+        inter
 
-    # NOTE: Private repos
-    personal-fonts
-  ];
+        # NOTE: Private repos
+        personal-fonts
+      ];
+    }
+    else {};
 
   environment.systemPackages = [
     agenix.packages."${currentSystem}".default

@@ -207,25 +207,28 @@ in {
     nix-direnv.enable = true;
   };
 
-  imports = [
-    (import ./fish {inherit currentSystemName;})
+  imports =
+    [
+      (import ./fish {inherit currentSystemName;})
 
-    agenix.homeManagerModules.default
+      agenix.homeManagerModules.default
 
-    ./bat.nix
-    ./dircolors.nix
-    ./email
-    ./foot.nix
-    ./ghostty.nix
-    ./git.nix
-    ./gtk.nix
-    ./helix.nix
-    ./lxqt
-    ./mercurial.nix
-    ./openbox
-    ./river.nix
-    ./scripts.nix
-    ./ssh.nix
-    ./waybar.nix
-  ];
+      ./bat.nix
+      ./dircolors.nix
+      ./email
+      ./ghostty.nix
+      ./git.nix
+      ./gtk.nix
+      ./helix.nix
+      ./lxqt
+      ./mercurial.nix
+      ./openbox
+      ./scripts.nix
+      ./ssh.nix
+    ]
+    ++ (lib.optionals isReform [
+      ./foot.nix
+      ./waybar.nix
+      ./river.nix
+    ]);
 }
