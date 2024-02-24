@@ -13,5 +13,6 @@ in rec {
   hosts = {
     macbook-pro-m1 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG9BGCOKZl4hv4d6lDmEB2UVRsxruWwUhX2kookNYVNc";
     innocence = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHNYn7MJQtRWn0MYZEezFInO8yYSAzOkBefkTj7YMiEl";
+    yuri = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIId1NY/bptjhoZ4d8VDNangFlavdR2Ee6hJEyA0rgv0Q";
   };
 }

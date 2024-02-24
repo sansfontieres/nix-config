@@ -53,8 +53,9 @@ in {
       riverctl map normal Super+Alt+Shift K resize vertical -100
       riverctl map normal Super+Alt+Shift L resize horizontal 100
 
-      riverctl map-pointer normal Super BTN_RIGHT resize-view
 
+      riverctl map-pointer normal Super BTN_LEFT move-view
+      riverctl map-pointer normal Super BTN_RIGHT resize-view
       riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
       for (i in `{seq 1 9}) {
