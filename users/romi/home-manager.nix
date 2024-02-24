@@ -4,15 +4,14 @@
   currentSystemName,
   ghostty,
   isDarwin,
-  isDesktop,
+  isReform,
 }: {
   config,
   lib,
   pkgs,
   ...
 }: let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
+  isLinux = !isDarwin;
   homeDirectory = config.home.homeDirectory;
 in {
   home.stateVersion = "23.11";
@@ -88,22 +87,21 @@ in {
       w3m
 
       # Misc
+      cachix
+      bins
       # Those are broken
       # opam
       # fpc
       # femtolisp-unstable
-
-      bins
     ]
     ++ (lib.optionals isDarwin [
-      cachix
-    ])
+      ])
     ++ (lib.optionals isLinux [
       # Compilers/interpreters and tools
       gdb
       valgrind
     ])
-    ++ (lib.optionals (isLinux && isDesktop) [
+    ++ (lib.optionals isLinux [
       # Terminal
       ghostty.packages."${currentSystem}".default
 
@@ -111,21 +109,54 @@ in {
       catclock
       featherpad
       tailscale-systray
-      xclip
 
       # Internet
       firefox
-      fluent-reader
       rssguard
-
-      # Email & Comm
-      ripcord
 
       # Libraries
       phantomstyle
 
       # Theming
       arc-icon-theme
+      papirus-icon-theme
+
+      # IME
+      # fcitx5
+      # fcitx5-configtool
+      # fcitx5-mozc
+    ])
+    ++ (lib.optionals (isLinux && !isReform) [
+      # Desktop utils
+      xclip
+
+      # Email & Comm
+      ripcord
+    ])
+    ++ (lib.optionals isReform [
+      # Desktop utils
+      river
+      waybar
+      swaybg
+      swayidle
+      mako
+      waylock
+      wofi
+      pavucontrol
+      pasystray
+      networkmanagerapplet
+      lxqt.pcmanfm-qt
+      lxqt.lximage-qt
+      libsForQt5.qt5ct
+      wl-clipboard
+      grim
+      slurp
+
+      # Terminal
+      foot
+
+      # Internet
+      netsurf.browser
     ]);
 
   home.sessionVariables =
@@ -148,6 +179,17 @@ in {
       then {
         # Git doesn’t respect ssh’s IdentityAgent.
         SSH_AUTH_SOCK = "${homeDirectory}/.strongbox/agent.sock";
+      }
+      else if isReform
+      then {
+        MOZ_ENABLE_WAYLAND = "1";
+        XDG_SESSION_TYPE = "wayland";
+
+        GTK_IM_MODULE = "fcitx";
+        QT_IM_MODULE = "fcitx";
+        XMODIFIERS = "@im=fcitx";
+
+        QT_QPA_PLATFORMTHEME = "qt5ct";
       }
       else {}
     );
@@ -173,6 +215,7 @@ in {
     ./bat.nix
     ./dircolors.nix
     ./email
+    ./foot.nix
     ./ghostty.nix
     ./git.nix
     ./gtk.nix
@@ -180,7 +223,9 @@ in {
     ./lxqt
     ./mercurial.nix
     ./openbox
+    ./river.nix
     ./scripts.nix
     ./ssh.nix
+    ./waybar.nix
   ];
 }

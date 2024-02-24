@@ -4,14 +4,17 @@
 {pkgs, ...}: {
   imports = [
     # Include the results of the hardware scan.
-    ./common.nix
     ./hardware/innocence.nix
+    ./common.nix
     ./nixos.nix
     ./locale.nix
   ];
 
-  # Bootloader.
+  # Bootloader
   boot.initrd.luks.devices."luks-671e90c5-2f9a-45c8-b019-012415c31567".device = "/dev/disk/by-uuid/671e90c5-2f9a-45c8-b019-012415c31567";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking

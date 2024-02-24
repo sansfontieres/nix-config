@@ -1,6 +1,7 @@
 {
   agenix,
   darwin,
+  reform,
   ghostty,
   home-manager,
   nixpkgs,
@@ -9,7 +10,7 @@
   system,
   user,
   isDarwin ? false,
-  isDesktop ? false,
+  isReform ? false,
 }: let
   OSConfigFile =
     if isDarwin
@@ -36,6 +37,11 @@
     then agenix.darwinModules
     else agenix.nixosModules;
 
+  reformModules =
+    if isReform
+    then reform.nixosModule
+    else {};
+
   homeManagerModule =
     if isDarwin
     then home-manager.darwinModules
@@ -47,6 +53,7 @@ in
     modules = [
       {nixpkgs.overlays = overlays;}
       agenixModules.age
+      reformModules
 
       machineConfig
       userOSConfig
@@ -61,7 +68,7 @@ in
             currentSystemName
             ghostty
             isDarwin
-            isDesktop
+            isReform
             ;
         };
       }

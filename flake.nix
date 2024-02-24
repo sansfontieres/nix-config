@@ -48,6 +48,7 @@
   outputs = {
     agenix,
     darwin,
+    reform,
     ghostty,
     home-manager,
     nixpkgs,
@@ -62,6 +63,7 @@
       inherit
         agenix
         darwin
+        reform
         ghostty
         home-manager
         nixpkgs
@@ -72,7 +74,12 @@
     nixosConfigurations.innocence = mkSystem "innocence" {
       system = "x86_64-linux";
       user = "romi";
-      isDesktop = true;
+    };
+
+    nixosConfigurations.yuri = mkSystem "yuri" {
+      system = "aarch64-linux";
+      user = "romi";
+      isReform = true;
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {
