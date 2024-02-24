@@ -16,6 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    reform = {
+      url = "git+https://codeberg.org/lykso/hardware-mnt-reform";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix/564595d0ad4be7277e07fa63b5a991b3c645655d";
       inputs = {

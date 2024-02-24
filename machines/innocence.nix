@@ -51,12 +51,5 @@
   environment.systemPackages = [
   ];
 
-  fonts.packages = with pkgs; [
-    inter
-
-    # NOTE: Private repos
-    personal-fonts
-  ];
-
   system.stateVersion = "23.11"; # Did you read the comment?
 }

@@ -216,11 +216,11 @@
         "zls": "zls"
       },
       "locked": {
-        "lastModified": 1707765898,
-        "narHash": "sha256-eZY/Xt4kRYieo4b2T1FEcu2aBifzAw68pmvbm1RFL8w=",
+        "lastModified": 1708459218,
+        "narHash": "sha256-HH7897SG4jzmnoSvTtP4NB25dH3kvM4wgzbRKOnF6WM=",
         "ref": "refs/heads/main",
-        "rev": "f115e257a4cd732e552eac22ccfb3475e68a469d",
-        "revCount": 5135,
+        "rev": "105817cbe7b34556fa869e72e650571cc6900b7a",
+        "revCount": 5191,
         "type": "git",
         "url": "ssh://git@github.com/mitchellh/ghostty"
       },
@@ -383,11 +383,11 @@
     },
     "nixpkgs-zig-0-12": {
       "locked": {
-        "lastModified": 1707614255,
-        "narHash": "sha256-26jDBuCgewZb+ifR3Ow6cZS/6Mz09pwC4ukKWtOjFZk=",
+        "lastModified": 1707846486,
+        "narHash": "sha256-ek2NESo8WPqUIuUPVs3L2rliCFofvjhR/i3ptaxfaJ4=",
         "owner": "vancluever",
         "repo": "nixpkgs",
-        "rev": "85b992eb1a8d3a3742ddb21eba7f79b0e4f2e78b",
+        "rev": "31119ca40f326e3a6552883fa62f2df56c17a7bf",
         "type": "github"
       },
       "original": {
@@ -395,6 +395,26 @@
         "ref": "vancluever-zig-0-12",
         "repo": "nixpkgs",
         "type": "github"
+      }
+    },
+    "reform": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1708364457,
+        "narHash": "sha256-2s6xeyKc6lccz1DQM5MOXorVQEtJreB7EeQ035Q4b4U=",
+        "ref": "refs/heads/main",
+        "rev": "7da6109a8e457178c82f530d64a4e962910570fa",
+        "revCount": 78,
+        "type": "git",
+        "url": "https://codeberg.org/lykso/hardware-mnt-reform"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/lykso/hardware-mnt-reform"
       }
     },
     "root": {
@@ -405,6 +425,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
+        "reform": "reform",
         "zig": "zig_2",
         "zls": "zls_2"
       }
@@ -449,11 +470,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707611073,
-        "narHash": "sha256-sMsxVKXP5TLcaVMNlRZ7KlDsYGwDdJAMtY0DKmb+7fQ=",
+        "lastModified": 1707783766,
+        "narHash": "sha256-kD90pK+KAzr3UrohYRqE7fWUaEg4Mv3rk1IhubiHFUM=",
         "owner": "mitchellh",
         "repo": "zig-overlay",
-        "rev": "aa4edff6f53e64443ca77e8d9ffe866f29e5b3d4",
+        "rev": "06f4507d05f90a54409a5206fcfba5966eea0c03",
         "type": "github"
       },
       "original": {

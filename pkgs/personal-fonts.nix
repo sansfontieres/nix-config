@@ -4,7 +4,8 @@ stdenv.mkDerivation {
 
   src = builtins.fetchGit {
     url = "git@github.com:sansfontieres/fonts";
-    rev = "297556276c7bc18d460d13b2a8f8f434a5f637d9";
+    ref = "front";
+    rev = "7651ed2e0f77b4e45b972c9ec1a5977347c3dc24";
   };
 
   installPhase = ''
