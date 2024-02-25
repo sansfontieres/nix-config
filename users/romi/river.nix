@@ -1,5 +1,7 @@
-let
+{lib, ...}: let
   wofiCmd = "wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css";
+  colors = import ./colors.nix;
+  theme = colors.hito_light;
 in {
   xdg.configFile."river/init" = {
     executable = true;
@@ -71,9 +73,10 @@ in {
 
       riverctl map normal Super F toggle-fullscreen
 
-      riverctl background-color 0xeeeeee
-      riverctl border-color-focused 0x665116
-      riverctl border-color-unfocused 0xcccccc
+      riverctl background-color 0x${lib.strings.removePrefix "#" theme.gray.three}
+      riverctl border-color-focused 0x${lib.strings.removePrefix "#" theme.extra.orange}
+      riverctl border-color-unfocused 0x${lib.strings.removePrefix "#" theme.gray.four}
+      riverctl border-width 4
 
       riverctl set-repeat 50 300
 
@@ -85,8 +88,6 @@ in {
 
       rivertile -view-padding 4 -outer-padding 4 &
 
-      # dbus-sway-environment
-      # configure-gtk
       foot --server &
       waybar &
       swayidle -w timeout 300 'waylock -fork-on-lock' &
