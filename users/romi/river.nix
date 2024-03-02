@@ -10,7 +10,7 @@ in {
 
       riverctl map normal Super Return spawn foot
 
-      riverctl map normal Super D spawn 'bemenu-run'
+      riverctl map normal Super Space spawn 'bemenu-run'
 
       riverctl map normal Super P spawn 'grim -g "$(slurp)"'
       riverctl map normal Super+Shift P spawn 'grim'
@@ -18,10 +18,13 @@ in {
       riverctl map normal Super F1 spawn 'brightnessctl s 1-'
       riverctl map normal Super F2 spawn 'brightnessctl s +1'
 
-      riverctl map normal Super F3 spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'
-      riverctl map normal Super F4 spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
-      riverctl map normal Super F5 spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
-      riverctl map normal Super F6 spawn 'playerctl play-pause'
+      riverctl map normal Super F11 spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'
+      riverctl map normal Super F12 spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
+      riverctl map normal Super F10 spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+
+      riverctl map normal Super F8 spawn 'playerctl play-pause'
+      riverctl map normal Super F9 spawn 'playerctl next'
+      riverctl map normal Super F7 spawn 'playerctl previous'
 
       riverctl map normal Super+Shift Q close
 
