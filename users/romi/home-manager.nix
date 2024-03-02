@@ -61,6 +61,8 @@ in {
       rlwrap
       samurai
       tlsclient
+      unrar
+      unzip
       watch
       _9pro
 
@@ -100,19 +102,21 @@ in {
       # Compilers/interpreters and tools
       gdb
       valgrind
-    ])
-    ++ (lib.optionals isLinux [
+
       # Terminal
       ghostty.packages."${currentSystem}".default
 
       # Desktop utils
       catclock
       featherpad
-      tailscale-systray
+
+      # Audio
+      audacious
 
       # Internet
       firefox
       rssguard
+      transmission-qt
 
       # Libraries
       phantomstyle
@@ -120,11 +124,6 @@ in {
       # Theming
       arc-icon-theme
       papirus-icon-theme
-
-      # IME
-      # fcitx5
-      # fcitx5-configtool
-      # fcitx5-mozc
     ])
     ++ (lib.optionals (isLinux && !isReform) [
       # Desktop utils
@@ -134,29 +133,9 @@ in {
       ripcord
     ])
     ++ (lib.optionals isReform [
-      # Desktop utils
-      river
-      waybar
-      swaybg
-      swayidle
-      mako
-      waylock
-      wofi
-      pavucontrol
-      pasystray
-      networkmanagerapplet
-      lxqt.pcmanfm-qt
-      lxqt.lximage-qt
-      libsForQt5.qt5ct
-      wl-clipboard
-      grim
-      slurp
-
-      # Terminal
-      foot
-
       # Internet
       netsurf.browser
+      libsForQt5.tokodon
     ]);
 
   home.sessionVariables =
@@ -190,6 +169,8 @@ in {
         XMODIFIERS = "@im=fcitx";
 
         QT_QPA_PLATFORMTHEME = "qt5ct";
+
+        GRIM_DEFAULT_DIR = "${homeDirectory}/Pictures/Screenshots";
       }
       else {}
     );
@@ -227,8 +208,10 @@ in {
       ./ssh.nix
     ]
     ++ (lib.optionals isReform [
+      ./bemenu.nix
       ./foot.nix
-      ./waybar.nix
+      ./mako.nix
       ./river.nix
+      ./waybar.nix
     ]);
 }

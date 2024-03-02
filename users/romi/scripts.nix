@@ -17,6 +17,11 @@ in {
       executable = true;
     };
 
+    "${script_path}/patoggle" = {
+      source = ../../scripts/patoggle.rc;
+      executable = true;
+    };
+
     "${script_path}/s" = {
       source = ../../scripts/s.rc;
       executable = true;

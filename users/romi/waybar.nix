@@ -1,20 +1,22 @@
 let
-  wofiCmd = "wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css";
+  colors = import ./colors.nix;
+  theme = colors.hito_light;
 in {
   xdg.configFile."waybar/config".text = ''
     {
+      "layer": "top",
       "height": 32,
       "modules-left": ["custom/run", "river/tags"],
       "modules-center": [],
-      "modules-right": ["tray", "clock"],
+      "modules-right": ["tray", "pulseaudio", "battery", "clock"],
 
       "custom/run": {
         "format": "Run",
-        "on-click": "${wofiCmd}"
+        "on-click": "bemenu-run",
       },
 
       "river/tags" : {
-        "num-tags": 5
+        "num-tags": 5,
       },
 
       "tray": {
@@ -36,14 +38,16 @@ in {
         "format-muted": "Silent",
         "format-bluetooth-muted": "Silent",
         "format-source-muted": "Silent",
-        "on-click": "pavucontrol",
+        "on-click": "pavucontrol-qt",
+        "on-click-right": "patoggle",
+        "on-click-middle": "playerctl play-pause",
       },
 
       "battery": {
         "format": "🔋 {capacity}%",
         "format-charging": "⚡ {capacity}%",
         "format-plugged": "⚡ {capacity}%",
-        "format-full": "🔋 {capacity}%"
+        "format-full": "🔋 {capacity}%",
       },
     }
   '';
@@ -57,8 +61,8 @@ in {
     }
 
     window#waybar {
-        background: #000000;
-        color: #ffffff;
+        background: ${theme.gray.four};
+        color: ${theme.foreground};
     }
 
     widget label, .text-button {
@@ -86,14 +90,14 @@ in {
     }
 
     button {
-        color: #ffffff;
+        color: ${theme.foreground};
         font-size: 14px;
         border: none;
     }
 
     button.focused {
-        background: #ffffff;
-        color: #000000;
+        background: ${theme.gray.three};
+        color: ${theme.foreground};
         border: none;
     }
 

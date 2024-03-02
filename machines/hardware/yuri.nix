@@ -2,9 +2,7 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -26,6 +24,11 @@
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/990e3d24-6d59-4007-b19a-15f78c284b3b";
+    fsType = "ext4";
+  };
+
+  fileSystems."/mnt/medias" = {
+    device = "/dev/disk/by-uuid/b6b8f914-b763-45e4-ab72-2ed0fa1625ce";
     fsType = "ext4";
   };
 

@@ -1,5 +1,4 @@
 {lib, ...}: let
-  wofiCmd = "wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css";
   colors = import ./colors.nix;
   theme = colors.hito_light;
 in {
@@ -11,13 +10,18 @@ in {
 
       riverctl map normal Super Return spawn foot
 
-      riverctl map normal Super D spawn '${wofiCmd}'
+      riverctl map normal Super D spawn 'bemenu-run'
 
-      riverctl map normal Super P spawn 'grim -g "$(slurp)" - | wl-copy'
-      riverctl map normal Super+Shift P spawn 'grim -g "$(slurp)" - | wl-copy'
+      riverctl map normal Super P spawn 'grim -g "$(slurp)"'
+      riverctl map normal Super+Shift P spawn 'grim'
 
       riverctl map normal Super F1 spawn 'brightnessctl s 1-'
       riverctl map normal Super F2 spawn 'brightnessctl s +1'
+
+      riverctl map normal Super F3 spawn 'pactl set-sink-volume @DEFAULT_SINK@ -5%'
+      riverctl map normal Super F4 spawn 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
+      riverctl map normal Super F5 spawn 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+      riverctl map normal Super F6 spawn 'playerctl play-pause'
 
       riverctl map normal Super+Shift Q close
 
@@ -34,16 +38,21 @@ in {
 
       riverctl map normal Super+Shift Return zoom
 
-      riverctl map normal Super H send-layout-cmd rivertile 'main-ratio -0.05'
-      riverctl map normal Super L send-layout-cmd rivertile 'main-ratio +0.05'
+      riverctl map normal Super H send-layout-cmd stacktile 'primary_ratio -0.05'
+      riverctl map normal Super L send-layout-cmd stacktile 'primary_ratio +0.05'
 
-      riverctl map normal Super+Shift H send-layout-cmd rivertile 'main-count +1'
-      riverctl map normal Super+Shift L send-layout-cmd rivertile 'main-count -1'
+      riverctl map normal Super+Shift H send-layout-cmd stacktile 'secondary_ratio -0.05'
+      riverctl map normal Super+Shift L send-layout-cmd stacktile 'secondary_ratio +0.05'
 
-      riverctl map normal Super Up move up 100
-      riverctl map normal Super Right move right 100
-      riverctl map normal Super Down move down 100
-      riverctl map normal Super Left move left 100
+      riverctl map normal Super Up move up 8
+      riverctl map normal Super Right move right 8
+      riverctl map normal Super Down move down 8
+      riverctl map normal Super Left move left 8
+
+      riverctl map normal Super+Shift Up move up 100
+      riverctl map normal Super+Shift Right move right 100
+      riverctl map normal Super+Shift Down move down 100
+      riverctl map normal Super+Shift Left move left 100
 
       riverctl map normal Super+Alt+Control H snap left
       riverctl map normal Super+Alt+Control J snap down
@@ -73,28 +82,49 @@ in {
 
       riverctl map normal Super F toggle-fullscreen
 
-      riverctl background-color 0x${lib.strings.removePrefix "#" theme.gray.three}
+      riverctl background-color 0xBEBFC4
       riverctl border-color-focused 0x${lib.strings.removePrefix "#" theme.extra.orange}
-      riverctl border-color-unfocused 0x${lib.strings.removePrefix "#" theme.gray.four}
+      riverctl border-color-unfocused 0x${lib.strings.removePrefix "#" theme.extra.selection}
       riverctl border-width 4
 
       riverctl set-repeat 50 300
 
       riverctl xcursor-theme Adwaita
 
-      riverctl default-layout rivertile
+      riverctl default-layout stacktile
 
       riverctl keyboard-layout 'us(altgr-intl)'
 
-      rivertile -view-padding 4 -outer-padding 4 &
+      stacktile --per-tag-config \
+          --inner-padding 6 \
+          --outer-padding 6 \
+          --primary-ratio 0.5 \
+          --secondary-count 1 \
+          --secondary-ratio 0.6 &
 
+
+      floating_apps = (            \
+        'lxqt-archiver'            \
+        'lximage-qt'               \
+        'pavucontrol-qt'          \
+        'audacious'               \
+        'pcmanfm-qt'              \
+        'org.keepassxc.KeePassXC' \
+        'org.fcitx.'              \
+      )
+      for (floating_app in $floating_apps) riverctl float-filter-add app-id $floating_app
+
+      dbus-sway-environment
+      configure-gtk
       foot --server &
+      pcmanfm-qt --daemon-mode &
+      fcitx5 -d &
       waybar &
+      mako &
+
       swayidle -w timeout 300 'waylock -fork-on-lock' &
       nm-applet --indicator &
-      pasystray &
-      tailscale-systray &
-      fcitx5 -d &
+
       keepassxc &
     '';
   };
@@ -105,8 +135,6 @@ in {
 
       text = ''
         #!/bin/sh
-
-        XDG_CURRENT_DESKTOP=river
 
         exec river
       '';

@@ -1,0 +1,12 @@
+#!/usr/bin/env rc
+
+active_port = `{pactl --format json list sinks | jq -r '.[]|select(.name == "alsa_output.platform-sound.stereo-fallback")|.active_port'}
+
+switch $active_port {
+case analog-output-speaker
+	pactl set-sink-port alsa_output.platform-sound.stereo-fallback analog-output-headphones
+	notify-send PulseAudio '🎧 Sink switched to headphones'
+case analog-output-headphones
+	pactl set-sink-port alsa_output.platform-sound.stereo-fallback analog-output-speaker
+	notify-send PulseAudio '🔊 Sink switched to speakers'
+}
