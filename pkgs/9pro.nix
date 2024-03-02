@@ -5,13 +5,13 @@
 }:
 stdenv.mkDerivation {
   pname = "9pro";
-  version = "unstable-2023-03-23";
+  version = "unstable-2024-02-28";
 
   src = fetchFromSourcehut {
     owner = "~ft";
     repo = "9pro";
-    rev = "2c1651bd5b23d04b203daf52801dd9b84bb9f6a9";
-    hash = "sha256-gBWgUzY8vGJayu7YQejuXKOiVTB2zWENRE9T4XAsDdg=";
+    rev = "e71d9c74dcf1525101694b132328c6071aaaf01f";
+    hash = "sha256-F/NBYuW27WvGG3WW4kxp07F7BZnsM0CVeHoWbdyqNTc=";
   };
 
   installPhase = ''
