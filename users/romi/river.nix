@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   colors = import ./colors.nix;
   theme = colors.hito_light;
 in {
@@ -106,19 +110,18 @@ in {
           --secondary-ratio 0.6 &
 
 
-      floating_apps = (            \
-        'lxqt-archiver'            \
-        'lximage-qt'               \
+      floating_apps = (           \
+        'lxqt-archiver'           \
+        'lximage-qt'              \
         'pavucontrol-qt'          \
         'audacious'               \
         'pcmanfm-qt'              \
         'org.keepassxc.KeePassXC' \
         'org.fcitx.'              \
+        'xdg-desktop-portal-lxqt' \
       )
       for (floating_app in $floating_apps) riverctl float-filter-add app-id $floating_app
 
-      dbus-sway-environment
-      configure-gtk
       foot --server &
       pcmanfm-qt --daemon-mode &
       fcitx5 -d &
@@ -129,6 +132,8 @@ in {
       nm-applet --indicator &
 
       keepassxc &
+      riverctl spawn "dbus-river-environment"
+      riverctl spawn "configure-gtk"
     '';
   };
 
@@ -138,6 +143,8 @@ in {
 
       text = ''
         #!/bin/sh
+
+        export XDG_CURRENT_DESKTOP=river
 
         exec river
       '';

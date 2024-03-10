@@ -97,7 +97,8 @@ in {
       # femtolisp-unstable
     ]
     ++ (lib.optionals isDarwin [
-      ])
+      # TODO: Fill
+    ])
     ++ (lib.optionals isLinux [
       # Compilers/interpreters and tools
       gdb
@@ -109,6 +110,7 @@ in {
       # Desktop utils
       catclock
       featherpad
+      zathura
 
       # Audio
       audacious
@@ -168,7 +170,8 @@ in {
         QT_IM_MODULE = "fcitx";
         XMODIFIERS = "@im=fcitx";
 
-        QT_QPA_PLATFORMTHEME = "qt5ct";
+        QT_QPA_PLATFORM = "wayland";
+        QT_QPA_PLATFORMTHEME = "lxqt";
 
         GRIM_DEFAULT_DIR = "${homeDirectory}/Pictures/Screenshots";
       }

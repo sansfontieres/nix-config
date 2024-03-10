@@ -8,15 +8,26 @@
   # https://github.com/emersion/xdg-desktop-portal-wlr/wiki/"It-doesn't-work"-Troubleshooting-Checklist
   # note: this is pretty much the same as  /etc/sway/config.d/nixos.conf but also restarts
   # some user services to make sure they have the correct environment variables
-  dbus-sway-environment = pkgs.writeTextFile {
-    name = "dbus-sway-environment";
-    destination = "/bin/dbus-sway-environment";
+  dbus-river-environment = pkgs.writeTextFile {
+    name = "dbus-river-environment";
+    destination = "/bin/dbus-river-environment";
     executable = true;
 
     text = ''
-      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river
-      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      dbus-update-activation-environment --systemd DISPLAY \
+                                                   WAYLAND_DISPLAY \
+                                                   XDG_CURRENT_DESKTOP=river \
+                                                   QT_QPA_PLATFORM=wayland \
+                                                   QT_QPA_PLATFORMTHEME=lxqt
+
+      systemctl --user stop pipewire \
+                            pipewire-media-session \
+                            xdg-desktop-portal \
+                            xdg-desktop-portal-wlr \
+                            xdg-desktop-portal-lxqt.slice \
+                            app-dbus\\x2d:1.2\\x2dorg.freedesktop.impl.portal.desktop.lxqt.slice \
+
+      systemctl --user start pipewire pipewire-media-session
     '';
   };
   # currently, there is some friction between sway and gtk:
@@ -84,9 +95,33 @@ in {
 
   xdg.portal = {
     enable = true;
+    lxqt = {
+      enable = true;
+      styles = [pkgs.phantomstyle];
+    };
+
     wlr.enable = true;
+
     # gtk portal needed to make gtk apps happy
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+
+    config = {
+      common = {
+        default = ["lxqt" "gtk"];
+        "org.freedesktop.impl.portal.FileChooser" = ["lxqt"];
+        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
+      };
+
+      river = {
+        default = ["lxqt" "gtk"];
+        "org.freedesktop.impl.portal.FileChooser" = ["lxqt"];
+        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
+      };
+    };
   };
 
   programs.river = {
@@ -106,14 +141,18 @@ in {
       playerctl
 
       libsForQt5.breeze-icons
-      libsForQt5.qt5ct
       lxqt.lximage-qt
       lxqt.lxqt-archiver
       lxqt.lxqt-sudo
       lxqt.pavucontrol-qt
       lxqt.pcmanfm-qt
+      lxqt.libfm-qt
+      lxqt.lxqt-config
+      lxqt.lxqt-qtplugin
+      lxqt.lxqt-menu-data
     ];
   };
+
   programs.waybar.enable = true;
 
   environment.systemPackages = [
@@ -122,7 +161,7 @@ in {
     pkgs.networkmanagerapplet
     pkgs.pulseaudio # for pactl
     configure-gtk
-    dbus-sway-environment
+    dbus-river-environment
   ];
 
   # Since we do not use a full-fledged desktop environment, we have to
