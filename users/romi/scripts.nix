@@ -7,6 +7,11 @@ in {
       executable = true;
     };
 
+    "${script_path}/bisync_home" = {
+      source = ../../scripts + "/bisync_home.rc";
+      executable = true;
+    };
+
     "${script_path}/finger" = {
       source = ../../scripts/finger.janet;
       executable = true;

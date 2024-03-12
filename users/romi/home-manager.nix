@@ -119,6 +119,8 @@ in {
       firefox
       rssguard
       transmission-qt
+      rclone
+      rclone-browser
 
       # Libraries
       phantomstyle

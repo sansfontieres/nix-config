@@ -1,0 +1,5 @@
+#!/usr/bin/env rc
+
+rclone bisync rsyncnet:Documents $home/Documents
+rclone bisync rsyncnet:Pictures $home/Pictures
+rclone bisync fastmail:/ $home/Temporary\ Files
