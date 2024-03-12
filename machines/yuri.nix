@@ -48,6 +48,7 @@
       gnome_schema=org.gnome.desktop.interface
       gsettings set $gnome_schema gtk-theme 'Adwaita'
       gsettings set $gnome_schema icon-theme 'breeze'
+      gsettings set $gnome_schema cursor-theme 'WhiteSur-cursors'
     '';
   };
 in {
@@ -150,6 +151,15 @@ in {
       lxqt.lxqt-config
       lxqt.lxqt-qtplugin
       lxqt.lxqt-menu-data
+
+      ffmpegthumbnailer
+      evince
+      gnome-epub-thumbnailer
+      libsForQt5.kdegraphics-thumbnailers
+
+      # door-knocker
+      quintom-cursor-theme
+      whitesur-cursors
     ];
   };
 

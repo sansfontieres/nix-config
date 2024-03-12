@@ -110,7 +110,7 @@ in {
       # Desktop utils
       catclock
       featherpad
-      zathura
+      qpdfview
 
       # Audio
       audacious

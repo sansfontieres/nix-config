@@ -1,10 +1,7 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
+{lib, ...}: let
   colors = import ./colors.nix;
   theme = colors.hito_light;
+  removePrefix = lib.strings.removePrefix;
 in {
   xdg.configFile."river/init" = {
     executable = true;
@@ -13,11 +10,12 @@ in {
       #!/usr/bin/env rc
 
       riverctl map normal Super Return spawn foot
+      riverctl map normal Super+Shift Return spawn pcmanfm-qt
 
-      riverctl map normal Super Space spawn 'bemenu-run'
+      riverctl map normal Super Space spawn bemenu-run
 
       riverctl map normal Super P spawn 'grim -g "$(slurp)"'
-      riverctl map normal Super+Shift P spawn 'grim'
+      riverctl map normal Super+Shift P spawn grim
 
       riverctl map normal Super F1 spawn 'brightnessctl s 1-'
       riverctl map normal Super F2 spawn 'brightnessctl s +1'
@@ -90,8 +88,8 @@ in {
       riverctl map normal Super F toggle-fullscreen
 
       riverctl background-color 0xBEBFC4
-      riverctl border-color-focused 0x${lib.strings.removePrefix "#" theme.extra.orange}
-      riverctl border-color-unfocused 0x${lib.strings.removePrefix "#" theme.extra.selection}
+      riverctl border-color-focused 0x${removePrefix "#" theme.extra.orange}
+      riverctl border-color-unfocused 0x${removePrefix "#" theme.extra.selection}
       riverctl border-width 4
 
       riverctl set-repeat 50 300
@@ -119,6 +117,7 @@ in {
         'org.keepassxc.KeePassXC' \
         'org.fcitx.'              \
         'xdg-desktop-portal-lxqt' \
+        'featherpad'              \
       )
       for (floating_app in $floating_apps) riverctl float-filter-add app-id $floating_app
 
@@ -132,8 +131,8 @@ in {
       nm-applet --indicator &
 
       keepassxc &
-      riverctl spawn "dbus-river-environment"
-      riverctl spawn "configure-gtk"
+      riverctl spawn dbus-river-environment
+      riverctl spawn configure-gtk
     '';
   };
 

@@ -20,7 +20,6 @@ in {
       },
 
       "tray": {
-        "icon-theme": "Papirus",
         "icon-size": 22,
         "spacing": 16,
       },
