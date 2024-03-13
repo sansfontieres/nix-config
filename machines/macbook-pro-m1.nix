@@ -9,6 +9,8 @@
     useDaemon = true;
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ./common.nix
   ];
