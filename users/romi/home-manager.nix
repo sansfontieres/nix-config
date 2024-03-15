@@ -118,6 +118,7 @@ in {
 
       # Internet
       firefox
+      ladybird
       rssguard
       transmission-qt
       rclone
