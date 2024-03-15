@@ -116,6 +116,10 @@ in {
       # Audio
       audacious
 
+      # Video
+      vlc
+      youtube-dl
+
       # Internet
       firefox
       ladybird
@@ -130,6 +134,10 @@ in {
       # Theming
       arc-icon-theme
       papirus-icon-theme
+
+      # Misc
+      anki
+      appimage-run
     ])
     ++ (lib.optionals (isLinux && !isReform) [
       # Desktop utils
@@ -141,7 +149,6 @@ in {
     ++ (lib.optionals isReform [
       # Internet
       netsurf.browser
-      libsForQt5.tokodon
     ]);
 
   home.sessionVariables =
