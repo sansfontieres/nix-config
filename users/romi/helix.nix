@@ -92,6 +92,14 @@ in {
           args = ["--quiet" "-"];
         };
       }
+
+      {
+        name = "c";
+        auto-format = true;
+        formatter = {
+          command = "${pkgs.clang-tools}/bin/clang-format";
+        };
+      }
     ];
 
     languages.language-server = {

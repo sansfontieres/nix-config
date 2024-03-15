@@ -71,6 +71,7 @@ in {
       janet
       jpm
       lldb_16
+      clang-tools
       nil
       zigpkgs.master
       zls
