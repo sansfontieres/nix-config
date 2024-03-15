@@ -10,7 +10,7 @@ in {
       #!/usr/bin/env rc
 
       riverctl map normal Super Return spawn foot
-      riverctl map normal Super+Shift Return spawn pcmanfm-qt
+      riverctl map normal Super+Shift E spawn pcmanfm-qt
 
       riverctl map normal Super Space spawn bemenu-run
 
@@ -81,6 +81,14 @@ in {
         riverctl map normal Super+Control $i toggle-focused-tags $tags
         riverctl map normal Super+Shift+Control $i toggle-view-tags $tags
       }
+
+      alltags=511
+      riverctl map normal Super 0 set-view-tags $alltags
+
+      scratchpad=4294967295
+      riverctl map normal Super m set-view-tags $scratchpad
+      riverctl map normal Super+Shift m toggle-focused-tags $scratchpad
+
       riverctl map normal Super Tab focus-previous-tags
 
       riverctl map normal Super+Shift Space toggle-float
@@ -94,7 +102,7 @@ in {
 
       riverctl set-repeat 50 300
 
-      riverctl xcursor-theme Adwaita
+      riverctl xcursor-theme WhiteSur-cursors
 
       riverctl default-layout stacktile
 
@@ -108,8 +116,9 @@ in {
           --secondary-ratio 0.6 &
 
 
-      floating_apps = (           \
+      floating_apps_by_id = (     \
         'lxqt-archiver'           \
+        'lxqt-notificationd'      \
         'lximage-qt'              \
         'pavucontrol-qt'          \
         'audacious'               \
@@ -119,7 +128,18 @@ in {
         'xdg-desktop-portal-lxqt' \
         'featherpad'              \
       )
-      for (floating_app in $floating_apps) riverctl float-filter-add app-id $floating_app
+      for (floating_app in $floating_apps_by_id) {
+        riverctl float-filter-add app-id $floating_app
+      }
+
+      riverctl csd-filter-add app-id lxqt-notificationd
+
+      floating_apps_by_title = (  \
+        'Picture-in-Picture'      \
+      )
+      for (floating_app in $floating_apps_by_title) {
+        riverctl float-filter-add title $floating_app
+      }
 
       foot --server &
       pcmanfm-qt --daemon-mode &
@@ -130,7 +150,6 @@ in {
       swayidle -w timeout 300 'waylock -fork-on-lock' &
       nm-applet --indicator &
 
-      keepassxc &
       riverctl spawn dbus-river-environment
       riverctl spawn configure-gtk
     '';
